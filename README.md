@@ -32,14 +32,17 @@ Welcome to the Plant Management project! This README will guide you through the 
 
 ## Set 2: Running the Project
 
-1. **Run Tailwind CSS and Start the Project:**
+1. **Run Tailwind CSS**
 
-   In the terminal, run the following command to simultaneously run Tailwind CSS and start the project:
+   In the terminal, run the following command to simultaneously run Tailwind CSS 
    ```
-   npm run tailwind && npm run start
+   npm run tailwind 
    ```
-
-   This command compiles Tailwind CSS styles and starts the project in your default web browser.
+2. **Start the Project:**
+   <ins>Open a new terminal </ins>
+   ```
+   npm run start
+   ```
 
 
 
