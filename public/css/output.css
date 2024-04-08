@@ -1128,6 +1128,11 @@ html.dark{
   vertical-align: bottom;
 }
 
+.text-6xl{
+  font-size: 3.75rem;
+  line-height: 1;
+}
+
 .text-lg{
   font-size: 1.125rem;
   line-height: 1.75rem;
@@ -1138,9 +1143,8 @@ html.dark{
   line-height: 1.25rem;
 }
 
-.text-6xl{
-  font-size: 3.75rem;
-  line-height: 1;
+.font-bold{
+  font-weight: 700;
 }
 
 .font-medium{
@@ -1153,10 +1157,6 @@ html.dark{
 
 .font-semibold{
   font-weight: 600;
-}
-
-.font-bold{
-  font-weight: 700;
 }
 
 .normal-case{
