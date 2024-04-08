@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "concurrently \"npm run appstart\" \"npm run tailwind\"",
-    "appstart": "node ./bin/www",
+    "start": "node ./bin/www",
     "tailwind": "npx tailwindcss -i ./public/css/input.css -o ./public/css/output.css --watch"
   },
   "dependencies": {
