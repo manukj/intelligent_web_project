@@ -1,8 +1,8 @@
 {
   "lang": "en-uk",
-  "name": "Plant Recog",
-  "short_name": "Plant Recog",
-  "description": "An application for recognizing plants using image recognition",
+  "name": "Plantify",
+  "short_name": "Plantify",
+  "description": "An application for identifying and post plants",
   "start_url": "/",
   "background_color": "#2f3d58",
   "theme_color": "#2f3d58",
@@ -10,7 +10,12 @@
   "display": "standalone",
   "icons": [
     {
-      "src": "/images/flat_icon.png"
+      "src": "/images/image_icon.png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/images/square_icon.png",
+      "sizes": "192x192"
     }
   ]
 }
