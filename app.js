@@ -18,13 +18,13 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("node_modules"));
 
 // Routes
-var dashBoardRouter = require("./routes/dashBoardRouter");
-var addPlantRouter = require("./routes/addPlantRouter");
-var detailsRouter = require("./routes/detailsRouter");
-var chatRouter = require("./routes/chatRouter");
-app.use("/", dashBoardRouter);
-app.use("/addPlant", addPlantRouter);
-app.use("/details", detailsRouter);
+// var dashBoardRouter = require("./routes/dashBoardRouter");
+// var addPlantRouter = require("./routes/addPlantRouter");
+// var detailsRouter = require("./routes/detailsRouter");
+var chatRouter = require("./server/routes/chatRouter");
+// app.use("/", dashBoardRouter);
+// app.use("/addPlant", addPlantRouter);
+// app.use("/details", detailsRouter);
 app.use("/chat", chatRouter);
 
 // catch 404 and forward to error handler
