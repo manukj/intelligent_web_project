@@ -6,5 +6,5 @@ module.exports = {
     "./node_modules/tw-elements/js/**/*.js",
   ],
   darkMode: "class",
-  plugins: [require("tw-elements/plugin.cjs")],
+  plugins: [require("tw-elements/plugin.cjs"), require("daisyui")],
 };
