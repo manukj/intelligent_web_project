@@ -4420,6 +4420,11 @@ details.collapse summary::-webkit-details-marker{
   margin-right: auto;
 }
 
+.mx-5{
+  margin-left: 1.25rem;
+  margin-right: 1.25rem;
+}
+
 .mb-0{
   margin-bottom: 0px;
 }
@@ -4482,6 +4487,22 @@ details.collapse summary::-webkit-details-marker{
 
 .h-screen{
   height: 100vh;
+}
+
+.h-3\/4{
+  height: 75%;
+}
+
+.h-3{
+  height: 0.75rem;
+}
+
+.h-1\/2{
+  height: 50%;
+}
+
+.h-1{
+  height: 0.25rem;
 }
 
 .w-0{
@@ -4770,6 +4791,31 @@ details.collapse summary::-webkit-details-marker{
 .bg-blue-500{
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+
+.bg-red-100{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 226 226 / var(--tw-bg-opacity));
+}
+
+.bg-red-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(252 165 165 / var(--tw-bg-opacity));
+}
+
+.bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+
+.bg-green-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
 }
 
 .bg-clip-padding{

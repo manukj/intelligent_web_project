@@ -14,5 +14,35 @@
     src="/tw-elements/dist/js/tw-elements.umd.min.js"
     type="text/javascript"
   ></script>
-  <div><%= title %></div>
+  <body>
+    <div class="flex flex-col h-screen">
+      <div class="flex flex-col h-screen mx-5">
+        <% chatMessages.forEach(function(message) { %> <% if (message.user_name
+        == user_name) { %>
+        <div class="chat chat-start">
+          <% } else { %>
+          <div class="chat chat-end">
+            <% } %> <%- include('chat_item', { chatMessage: message }) %>
+          </div>
+          <% }); %>
+        </div>
+        <div class="mx-5">
+          <form action="/chat" method="POST">
+            <input
+              type="text"
+              name="text"
+              placeholder="Type your message here"
+              class="w-full p-2 border border-gray-300 rounded"
+            />
+            <button
+              type="submit"
+              class="w-full p-2 mt-2 bg-blue-500 text-white rounded"
+            >
+              Send
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

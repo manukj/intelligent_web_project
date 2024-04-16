@@ -7,9 +7,9 @@ class ChatMessage {
 }
 
 const mockChatMessage = [
-  new ChatMessage("Hello", "John", new Date()),
-  new ChatMessage("How are you?", "Alice", new Date()),
-  new ChatMessage("I'm good, thanks!", "John", new Date()),
+  new ChatMessage("Hello", "John", new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')),
+  new ChatMessage("How are you?", "Alice", new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')),
+  new ChatMessage("I'm good, thanks!", "John", new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '')),
 ];
 
 module.exports = {

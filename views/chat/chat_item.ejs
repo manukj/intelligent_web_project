@@ -1,3 +1,6 @@
+<!-- This code represents a chat item in a chat interface. -->
+
+<!-- The chat image section -->
 <div class="chat-image avatar">
   <div class="w-10 rounded-full">
     <img
@@ -6,12 +9,21 @@
     />
   </div>
 </div>
+
+<!-- The chat header section -->
 <div class="chat-header">
+  <!-- The user name -->
   <%= chatMessage.user_name ?? 'Default User' %>
+  <!-- The chat time -->
+</div>
+
+<!-- The chat bubble section -->
+<div class="chat-bubble">
+  <!-- The chat message -->
+  <%= chatMessage.chat_message ?? 'Default Message' %>
+</div>
+<div class="chat-footer">
   <time class="text-xs opacity-50"
     ><%= chatMessage.chat_time ?? 'Default Time' %></time
   >
-</div>
-<div class="chat-bubble">
-  <%= chatMessage.chat_message ?? 'Default Message' %>
 </div>
