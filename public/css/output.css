@@ -4666,6 +4666,11 @@ details.collapse summary::-webkit-details-marker{
   vertical-align: bottom;
 }
 
+.text-5xl{
+  font-size: 3rem;
+  line-height: 1;
+}
+
 .text-6xl{
   font-size: 3.75rem;
   line-height: 1;
@@ -4679,11 +4684,6 @@ details.collapse summary::-webkit-details-marker{
 .text-sm{
   font-size: 0.875rem;
   line-height: 1.25rem;
-}
-
-.text-5xl{
-  font-size: 3rem;
-  line-height: 1;
 }
 
 .font-bold{
