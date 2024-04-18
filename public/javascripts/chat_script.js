@@ -15,18 +15,6 @@ function init() {
   // registerListener(form, input);
 }
 
-function registerListener(form, input) {
-  form.addEventListener("submit", function (e) {
-    console.log("Form submitted");
-    // socket.emit("chat", {
-    //   chat_message: input.value,
-    //   user_name: loggedInUserId,
-    //   chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    //   plant_id: plantId,
-    // });
-  });
-}
-
 function sendMessage() {
   console.log("Form submitted");
   var input = document.getElementById("chat_input");
