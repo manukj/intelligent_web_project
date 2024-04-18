@@ -2,16 +2,13 @@ exports.init = function (io) {
   io.sockets.on("connection", function (socket) {
     console.log("try");
     try {
-      /**
-       * create or joins a room
-       */
-      socket.on("create_or_join", function (room, userId) {
-        socket.join(room);
-        io.sockets.to(room).emit("joined", room, userId);
+      socket.on("create_or_join", function (plantID, userId) {
+        socket.join(plantID);
+        io.sockets.to(plantID).emit("joined", plantID, userId);
       });
 
-      socket.on("chat", function (room, userId, chatText) {
-        io.sockets.to(room).emit("chat", room, userId, chatText);
+      socket.on("chat", function (message) {
+        io.sockets.to(message.plant_id).emit("chat_message", message);
       });
 
       socket.on("disconnect", function () {

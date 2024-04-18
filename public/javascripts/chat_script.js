@@ -12,25 +12,48 @@ function init() {
   joinPlantChatRoom();
   getChatHistory(plantId);
   registerSocket();
-  registerListener(form, input);
+  // registerListener(form, input);
 }
 
 function registerListener(form, input) {
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
+    console.log("Form submitted");
+    // socket.emit("chat", {
+    //   chat_message: input.value,
+    //   user_name: loggedInUserId,
+    //   chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    //   plant_id: plantId,
+    // });
   });
 }
 
+function sendMessage() {
+  console.log("Form submitted");
+  var input = document.getElementById("chat_input");
+  socket.emit("chat", {
+    chat_message: input.value,
+    user_name: loggedInUserId,
+    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    plant_id: plantId,
+  });
+  input.value = "";
+}
+
 function registerSocket() {
-  // called when someone joins the room. If it is someone else it notifies the joining of the room
   socket.on("joined", function (room, userId) {
     console.log("user " + userId + " joined Room: " + room);
     if (userId === loggedInUserId) {
       console.log("You joined the room");
     } else {
-      // notifies that someone has joined the room
       console.log("Someone joined the room");
     }
+  });
+
+  socket.on("chat_message", function (msg) {
+    console.log("Received message:", msg);
+    const chatContainer = document.getElementById("chat_messages");
+    const chatMessageDiv = createChatMessageElement(msg);
+    chatContainer.appendChild(chatMessageDiv);
   });
 }
 
