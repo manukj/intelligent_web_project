@@ -89,10 +89,33 @@ function createChatMessageElement(message) {
   const chatImageDiv = document.createElement("div");
   chatImageDiv.classList.add("chat-image", "avatar");
   chatImageDiv.innerHTML = `
-    <div class="w-10 rounded-full">
-      <img alt="User Avatar" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+    <div class="avatar placeholder rounded-full border bg-neutral shadow-2xl">
+      <div class="text-neutral-content rounded-full w-10">
+        <span class="text-lg font-extrabold">${message.user_name
+          .substring(0, 2)
+          .toUpperCase()}</span>
+      </div>
     </div>
   `;
+
+  function generateRandomColor(name) {
+    const colors = [
+      "#FF5733",
+      "#C70039",
+      "#900C3F",
+      "#581845",
+      "#FFC300",
+      "#DAF7A6",
+      "#FF5733",
+      "#C70039",
+      "#900C3F",
+      "#581845",
+      "#FFC300",
+      "#DAF7A6",
+    ];
+    const index = name.charCodeAt(0) + (name.charCodeAt(1) % colors.length);
+    return colors[index];
+  }
 
   const chatHeaderDiv = document.createElement("div");
   chatHeaderDiv.classList.add("chat-header");
