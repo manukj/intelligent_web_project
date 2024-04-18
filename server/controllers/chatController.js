@@ -5,3 +5,8 @@ exports.chatPage = async (req, res, next) => {
     user_name: "John",
   });
 };
+
+exports.getChatMessages = async (req, res, next) => {
+  const plant_id = req.params.plant_id;
+  res.json(mockChatMessage);
+};

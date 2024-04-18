@@ -18,15 +18,8 @@
   ></script>
   <body onload="init()">
     <div class="flex flex-col h-screen">
-      <div class="flex flex-col h-screen mx-5">
-        <% chatMessages.forEach(function(message) { %> <% if (message.user_name
-        == user_name) { %>
-        <div class="chat chat-start">
-          <% } else { %>
-          <div class="chat chat-end">
-            <% } %> <%- include('chat_item', { chatMessage: message }) %>
-          </div>
-          <% }); %>
+      <div class="flex flex-col h-screen mx-5" id="chat_messages">
+        
         </div>
         <div class="mx-5">
           <form id="chat_form" method="POST">
