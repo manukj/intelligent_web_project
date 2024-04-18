@@ -4,6 +4,13 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 
+/**
+ * Routers
+ */
+var dashBoardRouter = require("./server/routes/dashBoardRouter");
+var addPlantRouter = require("./server/routes/addPlantRouter");
+var detailsRouter = require("./server/routes/detailsRouter");
+var chatRouter = require("./server/routes/chatRouter");
 var app = express();
 
 // view engine setup
@@ -18,10 +25,6 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("node_modules"));
 
 // Routes
-var dashBoardRouter = require("./server/routes/dashBoardRouter");
-var addPlantRouter = require("./server/routes/addPlantRouter");
-var detailsRouter = require("./server/routes/detailsRouter");
-var chatRouter = require("./server/routes/chatRouter");
 app.use("/", dashBoardRouter);
 app.use("/addPlant", addPlantRouter);
 app.use("/details", detailsRouter);
