@@ -12,20 +12,20 @@
   </script>
 </head>
 <!-- Service working Implementation should be uncommented at the end of the project -->
-<script>
+<!-- <script>
     if ("serviceWorker" in navigator) {
       navigator.serviceWorker.register("/sw.js", { scope: "/" });
     }
-  </script>
+  </script> -->
 <script src="/tw-elements/dist/js/tw-elements.umd.min.js" type="text/javascript"></script>
 
 <body onload="init()">
-  <div class="flex flex-col h-screen">
-    <div class="flex flex-col h-screen mx-5" id="chat_messages">
+  <div class="flex flex-col h-full">
+    <div class="flex flex-col h-full mx-5" id="chat_messages">
     </div>
-    <div class="mx-5">
-      <input type="text" name="text" placeholder="Type your message here" class="w-full p-2 border border-gray-300 rounded" id="chat_input" />
-      <button onclick="sendMessage()" class="w-full p-2 mt-2 bg-blue-500 text-white rounded">
+    <div class="mx-5 flex flex-row h-11 ">
+      <input type="text" name="text" placeholder="Type your message here" class="w-full h-11 p-2 border border-gray-300 rounded" id="chat_input" />
+      <button onclick="sendMessage()" class=" h-11 px-4 mx-2  bg-blue-500 text-white rounded">
         Send
       </button>
     </div>
