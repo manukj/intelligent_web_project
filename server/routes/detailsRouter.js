@@ -1,8 +1,10 @@
 var express = require("express");
-const { detailsPage } = require("../controllers/detailsController");
-
+const { detailsPage, savePlant} = require("../controllers/detailsController");
+const plantModel = require("../models/plant");
 var router = express.Router();
 
 router.get("/", detailsPage);
+
+router.post('/save', savePlant);
 
 module.exports = router;
