@@ -1,18 +1,13 @@
 let socket = io();
 const urlParams = new URLSearchParams(window.location.search);
-const plantId = urlParams.get("plant_id");
-const loggedInUserId = urlParams.get("user_name");
+let plantId = "";
+let loggedInUserName = "";
 var chatMessages = [];
 
 function init() {
-  var form = document.getElementById("chat_form");
-  var input = document.getElementById("chat_input");
-  // read plant_id and user_id from the URL
-
   joinPlantChatRoom();
   getChatHistory(plantId);
   registerSocket();
-  // registerListener(form, input);
 }
 
 function sendMessage() {
@@ -20,7 +15,7 @@ function sendMessage() {
   var input = document.getElementById("chat_input");
   socket.emit("chat", {
     chat_message: input.value,
-    user_name: loggedInUserId,
+    user_name: loggedInUserName,
     chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
     plant_id: plantId,
   });
@@ -30,7 +25,7 @@ function sendMessage() {
 function registerSocket() {
   socket.on("joined", function (room, userId) {
     console.log("user " + userId + " joined Room: " + room);
-    if (userId === loggedInUserId) {
+    if (userId === loggedInUserName) {
       console.log("You joined the room");
     } else {
       console.log("Someone joined the room");
@@ -48,7 +43,7 @@ function registerSocket() {
 function joinPlantChatRoom() {
   console.log("Joining room");
   var roomNo = plantId;
-  var name = loggedInUserId;
+  var name = loggedInUserName;
   socket.emit("create_or_join", roomNo, name);
 }
 
@@ -83,7 +78,7 @@ function createChatMessageElement(message) {
   const chatMessageDiv = document.createElement("div");
   chatMessageDiv.classList.add(
     "chat",
-    message.user_name === loggedInUserId ? "chat-end" : "chat-start"
+    message.user_name === loggedInUserName ? "chat-end" : "chat-start"
   );
 
   const chatImageDiv = document.createElement("div");

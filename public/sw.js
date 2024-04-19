@@ -14,37 +14,45 @@ self.addEventListener("install", (event) => {
       log("Service Worker: Caching App Shell at the moment......");
       try {
         const cache = await caches.open(CACHE_NAME);
-        cache.addAll(["/", "/css/output.css"]);
-      } catch {
-        log("error occured while caching...");
+        await cache.addAll(["/", "/css/output.css"]);
+        
+        // Print all the caches that are added
+        const cacheKeys = await caches.keys();
+        cacheKeys.forEach((key) => {
+          log("Cache added: " + key);
+        });
+      } catch (error) {
+        log("Error occurred while caching: " + error);
       }
     })()
   );
 });
 
 //clear cache on reload
-self.addEventListener("activate", (event) => {
-  // Remove old caches
-  event.waitUntil(
-    (async () => {
-      const keys = await caches.keys();
-      return keys.map(async (cache) => {
-        if (cache !== cacheName) {
-          log(cache);
-          return await caches.delete(cache);
-        }
-      });
-    })()
-  );
-});
+// self.addEventListener("activate", (event) => {
+//   // Remove old caches
+//   event.waitUntil(
+//     (async () => {
+//       const keys = await caches.keys();
+//       return keys.map(async (cache) => {
+//         if (cache !== CACHE_NAME) {
+//           log(cache);
+//           return await caches.delete(cache);
+//         }
+//       });
+//     })()
+//   );
+// });
 
-self.addEventListener("fetch", function (event) {
-  log(event.request.url);
-  log(event.request.url);
-  event.respondWith(
-    caches.match(event.request).then(function (response) {
-      log(response);
-      return response || fetch(event.request);
-    })
-  );
-});
+// self.addEventListener("fetch", function (event) {
+//   log(event.request.url);
+//   event.respondWith(
+//     fetch(event.request)
+//       .then((response) => {
+//         return fetchResponse;
+//       })
+//       .catch(() => {
+//         return caches.match(event.request);
+//       })
+//   );
+// });

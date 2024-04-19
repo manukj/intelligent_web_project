@@ -1,8 +1,11 @@
 const { mockChatMessage } = require("../models/chat_model");
 exports.chatPage = async (req, res, next) => {
+  const plant_id = req.params.plant_id;
+  const user_name = req.params.user_name;
   res.render("chat/chat", {
     chatMessages: mockChatMessage,
-    user_name: "John",
+    userName: user_name,
+    plantId: plant_id,
   });
 };
 
