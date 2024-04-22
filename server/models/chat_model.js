@@ -1,30 +1,20 @@
-class ChatMessage {
-  constructor(chat_message, user_name, chat_time) {
-    this.chat_message = chat_message;
-    this.user_name = user_name;
-    this.chat_time = chat_time;
-  }
-}
+let mongoose = require("mongoose");
+let Schema = mongoose.Schema;
 
-const mockChatMessage = [
-  new ChatMessage(
-    "Hello",
-    "John",
-    new Date().toISOString().replace(/T/, " ").replace(/\..+/, "")
-  ),
-  new ChatMessage(
-    "How are you?",
-    "Mark",
-    new Date().toISOString().replace(/T/, " ").replace(/\..+/, "")
-  ),
-  new ChatMessage(
-    "I'm good, thanks!",
-    "John",
-    new Date().toISOString().replace(/T/, " ").replace(/\..+/, "")
-  ),
-];
+let ChatSchema = new Schema({
+  chat_message: { type: String, required: true },
+  user_name: { type: String, required: true },
+  chat_time: { type: Date, required: true },
+  plant_id: { type: String, required: true },
+});
+
+// Configure the 'toObject' option for the schema to include getters
+// and virtuals when converting to an object
+ChatSchema.set("toObject", { getters: true, virtuals: true });
+
+// Create the mongoose model 'todo' based on the defined schema
+let ChatMessage = mongoose.model("chatMessages", ChatSchema);
 
 module.exports = {
   ChatMessage,
-  mockChatMessage,
 };
