@@ -2,19 +2,22 @@ const chatModel = require("../models/chat_model");
 
 const mockChatMessage = [
   {
-    message: "Hello",
-    sender: "John",
-    timestamp: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    chat_message: "Hello",
+    user_name: "John",
+    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    plant_id: "1",
   },
   {
-    message: "How are you?",
-    sender: "Mark",
-    timestamp: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    chat_message: "How are you?",
+    user_name: "Mark",
+    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    plant_id: "1",
   },
   {
-    message: "I'm good, thanks!",
-    sender: "John",
-    timestamp: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    chat_message: "I'm good, thanks!",
+    user_name: "John",
+    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+    plant_id: "1",
   },
 ];
 
