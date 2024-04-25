@@ -8,6 +8,15 @@ function init() {
   joinPlantChatRoom();
   getChatHistory(plantId);
   registerSocket();
+  registerFormSubmit();
+}
+
+function registerFormSubmit() {
+  const chatForm = document.getElementById("chat_form");
+  chatForm.addEventListener("submit", function (event) {
+    event.preventDefault();
+    sendMessage();
+  });
 }
 
 function sendMessage() {

@@ -43,7 +43,7 @@ exports.getChatMessagesByPlantId = async (req, res, next) => {
     })
     .catch((err) => {
       console.error("Error retrieving chat messages: ", err);
-      res.json(null);
+      res.json("Error retrieving chat messages: ", err);
     });
 };
 
@@ -68,10 +68,10 @@ exports.addChatMessage = async (req, res, next) => {
     .save()
     .then((chat) => {
       console.log("Chat message added successfully! :", chat);
-      return JSON.stringify(chat);
+      res.json(chat);
     })
     .catch((err) => {
       console.error("Error adding chat message: ", err);
-      return null;
+      res.json("Error adding chat message: ", err);
     });
 };
