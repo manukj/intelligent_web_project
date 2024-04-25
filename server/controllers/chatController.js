@@ -32,13 +32,19 @@ exports.chatPage = async (req, res, next) => {
 
 exports.getChatMessagesByPlantId = async (req, res, next) => {
   const plant_id = req.params.plant_id;
-  // chatModel.ChatMessage.find({ plant_id: plant_id }, (err, chatMessages) => {
-  //   if (err) {
-  //     return next(err);
-  //   }
-  //   res.json(chatMessages);
-  // });
-  res.json(mockChatMessage);
+  console.log("Getting chat messages for plant id: ", plant_id);
+  return ChatMessage.find({})
+    .then((chats) => {
+      console.log(
+        "Chat messages retrieved successfully! :",
+        JSON.stringify(chats)
+      );
+      res.json(chats);
+    })
+    .catch((err) => {
+      console.error("Error retrieving chat messages: ", err);
+      res.json(null);
+    });
 };
 
 exports.addChatMessage = async (req, res, next) => {
@@ -51,7 +57,7 @@ exports.addChatMessage = async (req, res, next) => {
     .replace(/\..+/, "");
 
   const newChatMessage = new ChatMessage({
-    chat_message: "message",
+    chat_message: message,
     user_name: user_name,
     chat_time: timestamp,
     plant_id: plant_id,
