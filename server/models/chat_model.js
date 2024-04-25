@@ -15,6 +15,4 @@ ChatSchema.set("toObject", { getters: true, virtuals: true });
 // Create the mongoose model 'todo' based on the defined schema
 let ChatMessage = mongoose.model("chatMessages", ChatSchema);
 
-module.exports = {
-  ChatMessage,
-};
+module.exports = ChatMessage;

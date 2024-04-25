@@ -37,7 +37,27 @@ function registerSocket() {
     const chatContainer = document.getElementById("chat_messages");
     const chatMessageDiv = createChatMessageElement(msg);
     chatContainer.appendChild(chatMessageDiv);
+    addChatToDB(msg);
   });
+}
+
+function addChatToDB(message) {
+  fetch(
+    `/chat/addChatMessage/${plantId}/${loggedInUserName}/${message.chat_message}`
+  )
+    .then(async (response) => {
+      if (response.ok) {
+        return response.json();
+      } else {
+        throw new Error("Failed to add chat message");
+      }
+    })
+    .then((chatMessage) => {
+      console.log("Chat Message added to DB:", chatMessage);
+    })
+    .catch((error) => {
+      console.error("Error adding chat message to DB:", error.message);
+    });
 }
 
 function joinPlantChatRoom() {

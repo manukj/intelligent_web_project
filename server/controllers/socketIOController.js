@@ -1,6 +1,5 @@
 exports.init = function (io) {
   io.sockets.on("connection", function (socket) {
-    console.log("try");
     try {
       socket.on("create_or_join", function (plantID, userId) {
         socket.join(plantID);

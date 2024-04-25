@@ -3,7 +3,7 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-const mongoose = require("mongoose");
+require("./server/database/database");
 
 /**
  * Routers
@@ -47,19 +47,5 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-// mongoo db connection
-const URI =
-  "mongodb+srv://mkenchappajunjanna1:diSfCZ5VwjfbA477@plantify-cluster.kraujc7.mongodb.net/";
-mongoose
-  .connect(URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.log("Error connecting to MongoDB", err);
-  });
 
 module.exports = app;

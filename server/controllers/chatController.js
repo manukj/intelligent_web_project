@@ -1,4 +1,4 @@
-const chatModel = require("../models/chat_model");
+const ChatMessage = require("../models/chat_model");
 
 const mockChatMessage = [
   {
@@ -44,23 +44,28 @@ exports.getChatMessagesByPlantId = async (req, res, next) => {
 exports.addChatMessage = async (req, res, next) => {
   const plant_id = req.params.plant_id;
   const user_name = req.params.user_name;
-  const message = req.body.message;
+  const message = req.params.message;
   const timestamp = new Date()
     .toISOString()
     .replace(/T/, " ")
     .replace(/\..+/, "");
 
-  const newChatMessage = new chatModel.ChatMessage({
-    chat_message: message,
+  const newChatMessage = new ChatMessage({
+    chat_message: "message",
     user_name: user_name,
     chat_time: timestamp,
     plant_id: plant_id,
   });
 
-  newChatMessage.save((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.json(newChatMessage);
-  });
+  console.log("Adding chat message: ", newChatMessage);
+  return newChatMessage
+    .save()
+    .then((chat) => {
+      console.log("Chat message added successfully! :", chat);
+      return JSON.stringify(chat);
+    })
+    .catch((err) => {
+      console.error("Error adding chat message: ", err);
+      return null;
+    });
 };
