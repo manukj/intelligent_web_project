@@ -1,26 +1,5 @@
 const ChatMessage = require("../models/chat_model");
 
-const mockChatMessage = [
-  {
-    chat_message: "Hello",
-    user_name: "John",
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: "1",
-  },
-  {
-    chat_message: "How are you?",
-    user_name: "Mark",
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: "1",
-  },
-  {
-    chat_message: "I'm good, thanks!",
-    user_name: "John",
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: "1",
-  },
-];
-
 exports.chatPage = async (req, res, next) => {
   const plant_id = req.params.plant_id;
   const user_name = req.params.user_name;
@@ -75,3 +54,4 @@ exports.addChatMessage = async (req, res, next) => {
       res.json("Error adding chat message: ", err);
     });
 };
+

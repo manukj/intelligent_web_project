@@ -1,4 +1,4 @@
-const CACHE_NAME = "Plant Recognition v1.0";
+export const CACHE_NAME = "Plant Recognition v1.0";
 
 console.log("Service Worker: Registered");
 
