@@ -5773,6 +5773,10 @@ details.collapse summary::-webkit-details-marker{
   height: 100vh;
 }
 
+.h-6{
+  height: 1.5rem;
+}
+
 .min-h-max{
   min-height: -moz-max-content;
   min-height: max-content;
@@ -5804,6 +5808,14 @@ details.collapse summary::-webkit-details-marker{
 
 .w-screen{
   width: 100vw;
+}
+
+.w-6{
+  width: 1.5rem;
+}
+
+.w-1\/2{
+  width: 50%;
 }
 
 .max-w-\[200px\]{
@@ -6156,6 +6168,14 @@ details.collapse summary::-webkit-details-marker{
 
 .stroke-orange-100{
   stroke: #ffedd5;
+}
+
+.stroke-current{
+  stroke: currentColor;
+}
+
+.stroke-white{
+  stroke: #fff;
 }
 
 .p-10{
