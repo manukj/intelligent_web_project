@@ -3,7 +3,7 @@ const ChatMessage = require("../models/chat_model");
 exports.chatPage = async (req, res, next) => {
   const plant_id = req.params.plant_id;
   const user_name = req.params.user_name;
-  res.render("chat/chat", {
+  res.render("details/chat", {
     userName: user_name,
     plantId: plant_id,
   });
