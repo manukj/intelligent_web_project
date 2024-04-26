@@ -32,8 +32,9 @@ app.use("/details", detailsRouter);
 app.use("/chat", chatRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
-  next(createError(404));
+// Middleware to handle 404 - Not Found
+app.use((req, res, next) => {
+  res.status(404).render('error/404_error',{url: req.url});
 });
 
 // error handler
@@ -46,6 +47,5 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 });
-
 
 module.exports = app;
