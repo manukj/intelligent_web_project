@@ -22,7 +22,7 @@ exports.getChatMessagesByPlantId = async (req, res, next) => {
     })
     .catch((err) => {
       console.error("Error retrieving chat messages: ", err);
-      res.json("Error retrieving chat messages: ", err);
+      res.json("Error retrieving chat messages: ");
     });
 };
 
@@ -51,7 +51,10 @@ exports.addChatMessage = async (req, res, next) => {
     })
     .catch((err) => {
       console.error("Error adding chat message: ", err);
-      res.json("Error adding chat message: ", err);
+      return res.status(500).json({
+        success: false,
+        message: "Error fetching data",
+        error: err.message, // Provides more specific error detail
+      });
     });
 };
-

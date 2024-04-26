@@ -1,0 +1,16 @@
+<div class="toast toast-center hidden" id="toast">
+  <div class="alert alert-error">
+    <span class="text-white">Your offline</span>
+  </div>
+</div>
+
+<script>
+  window.addEventListener("offline", function () {
+    console.log("Disconnected...so sad!!!");
+    document.getElementById("toast").classList.remove("hidden");
+  });
+  window.addEventListener("online", function () {
+    console.log("Connected...yay!!!");
+    document.getElementById("toast").classList.add("hidden");
+  });
+</script>

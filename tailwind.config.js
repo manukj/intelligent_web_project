@@ -7,4 +7,13 @@ module.exports = {
   ],
   darkMode: "class",
   plugins: [require("tw-elements/plugin.cjs"), require("daisyui")],
+  daisyui: {
+    themes: ["light"],
+    styled: true,
+    themes: true,
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false,
+  },
 };
