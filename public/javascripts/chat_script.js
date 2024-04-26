@@ -13,10 +13,14 @@ function init() {
 
 function registerFormSubmit() {
   const chatForm = document.getElementById("chat_form");
-  chatForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-    sendMessage();
-  });
+  if (chatForm) {
+    chatForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      sendMessage();
+    });
+  } else {
+    console.error("chat_form element not found");
+  }
 }
 
 function sendMessage() {
