@@ -32,7 +32,7 @@ app.use("/", dashBoardRouter);
 app.use("/addPlant", addPlantRouter);
 app.use("/details", detailsRouter);
 app.use("/chat", chatRouter);
-app.use("/offline", offlineRouter);
+app.use("/error", offlineRouter);
 
 // catch 404 and forward to error handler
 // Middleware to handle 404 - Not Found

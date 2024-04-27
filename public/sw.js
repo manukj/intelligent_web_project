@@ -14,7 +14,13 @@ self.addEventListener("install", (event) => {
       log("Service Worker: Caching App Shell at the moment......");
       try {
         const cache = await caches.open(CACHE_NAME);
-        cache.addAll(["/", "/css/output.css", "/offline", "/details/tree"]);
+        cache.addAll([
+          "/",
+          "/css/output.css",
+          "/error/404_error",
+          "/error/offline",
+          "",
+        ]);
       } catch {
         log("error occured while caching...");
       }
@@ -50,15 +56,19 @@ self.addEventListener("fetch", function (event) {
           if (response) {
             return response;
           }
-          return caches.match("/offline").then((response) => {
+          return getOfflinePage().then((response) => {
             return (
               response ||
-              new Response(
-                "You are offline and the requested content is not cached.",
-                {
-                  status: 404,
-                  statusText: "Not Found",
-                }
+              get404Page().then(
+                (response) =>
+                  response ||
+                  new Response(
+                    "You are offline and the requested content is not cached.",
+                    {
+                      status: 404,
+                      statusText: "Not Found",
+                    }
+                  )
               )
             );
           });
@@ -66,3 +76,11 @@ self.addEventListener("fetch", function (event) {
       })
   );
 });
+
+function getOfflinePage() {
+  return caches.match("/error/offline");
+}
+
+function get404Page() {
+  return caches.match("/error/404_error");
+}
