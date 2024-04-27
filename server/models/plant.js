@@ -35,7 +35,7 @@ exports.findById = async(id)=>{
         const col = await postCollection();
         return col.findOne({_id:id});
     }catch (e) {
-        throw "find data by id failed"
+        return null;
     }
 }
 exports.update = async (id,plant)=>{
