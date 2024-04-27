@@ -9,6 +9,22 @@ function init() {
   getChatHistory(plantId);
   registerSocket();
   registerFormSubmit();
+  listenForOnlineSync();
+}
+
+function listenForOnlineSync() {
+  window.addEventListener("online", function () {
+    console.log("You are now online.");
+    openSyncChatsIDB().then((db) => {
+      getAllSyncChatMessages(db).then((syncChats) => {
+        syncChats.forEach((data) => {
+          console.log("syncing data offline chat", data.value);
+          socket.emit("chat", data.value);
+          deleteSyncChatFromIDB(db, data.id);
+        });
+      });
+    });
+  });
 }
 
 function registerFormSubmit() {
@@ -24,15 +40,30 @@ function registerFormSubmit() {
 }
 
 function sendMessage() {
-  console.log("Form submitted");
   var input = document.getElementById("chat_input");
-  socket.emit("chat", {
+  var chatMessage = {
     chat_message: input.value,
     user_name: loggedInUserName,
     chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
     plant_id: plantId,
+  };
+
+  openSyncChatsIDB().then((db) => {
+    addNewChatToSync(db, chatMessage).then((data) => {
+      renderChatMessages([data.value]);
+      if (navigator.onLine) {
+        console.log("Chat added to Sync DB");
+        input.value = "";
+        console.log("chatMessage", chatMessage);
+        socket.emit("chat", chatMessage);
+        deleteSyncChatFromIDB(db, data.id);
+      } else {
+        console.log("Chat added to Sync DB");
+        input.value = "";
+        console.log("chatMessage", chatMessage);
+      }
+    });
   });
-  input.value = "";
 }
 
 function registerSocket() {
@@ -47,9 +78,6 @@ function registerSocket() {
 
   socket.on("chat_message", function (msg) {
     console.log("Received message:", msg);
-    const chatContainer = document.getElementById("chat_messages");
-    const chatMessageDiv = createChatMessageElement(msg);
-    chatContainer.appendChild(chatMessageDiv);
     addChatToDB(msg);
   });
 }
@@ -125,25 +153,6 @@ function createChatMessageElement(message) {
       </div>
     </div>
   `;
-
-  function generateRandomColor(name) {
-    const colors = [
-      "#FF5733",
-      "#C70039",
-      "#900C3F",
-      "#581845",
-      "#FFC300",
-      "#DAF7A6",
-      "#FF5733",
-      "#C70039",
-      "#900C3F",
-      "#581845",
-      "#FFC300",
-      "#DAF7A6",
-    ];
-    const index = name.charCodeAt(0) + (name.charCodeAt(1) % colors.length);
-    return colors[index];
-  }
 
   const chatHeaderDiv = document.createElement("div");
   chatHeaderDiv.classList.add("chat-header");
