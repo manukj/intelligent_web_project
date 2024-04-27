@@ -1,4 +1,4 @@
-export const CACHE_NAME = "Plant Recognition v1.0";
+const CACHE_NAME = "Plant Recognition v1.0";
 
 console.log("Service Worker: Registered");
 
@@ -14,15 +14,9 @@ self.addEventListener("install", (event) => {
       log("Service Worker: Caching App Shell at the moment......");
       try {
         const cache = await caches.open(CACHE_NAME);
-        await cache.addAll(["/", "/css/output.css"]);
-        
-        // Print all the caches that are added
-        const cacheKeys = await caches.keys();
-        cacheKeys.forEach((key) => {
-          log("Cache added: " + key);
-        });
-      } catch (error) {
-        log("Error occurred while caching: " + error);
+        cache.addAll(["/", "/css/output.css", "/details/tree"]);
+      } catch {
+        log("error occured while caching...");
       }
     })()
   );
@@ -44,15 +38,15 @@ self.addEventListener("install", (event) => {
 //   );
 // });
 
-// self.addEventListener("fetch", function (event) {
-//   log(event.request.url);
-//   event.respondWith(
-//     fetch(event.request)
-//       .then((response) => {
-//         return fetchResponse;
-//       })
-//       .catch(() => {
-//         return caches.match(event.request);
-//       })
-//   );
-// });
+self.addEventListener("fetch", function (event) {
+  log(event.request.url);
+  event.respondWith(
+    fetch(event.request)
+      .then((response) => {
+        return response;
+      })
+      .catch(() => {
+        return caches.match(event.request);
+      })
+  );
+});
