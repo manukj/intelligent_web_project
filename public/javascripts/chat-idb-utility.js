@@ -2,6 +2,34 @@
 const CHAT_IDB_NAME = "chat";
 const CHAT_MESSAGES_STORE_NAME = "chatMessages";
 const SYNC_CHATS_STORE_NAME = "sync-chats";
+const SYNCH_CHAT_EVENT = "sync-chat";
+
+const addNewChatToSync = (syncChatIDB, message) => {
+  const transaction = syncChatIDB.transaction(
+    [SYNC_CHATS_STORE_NAME],
+    "readwrite"
+  );
+  const chatStore = transaction.objectStore(SYNC_CHATS_STORE_NAME);
+  const addRequest = chatStore.add({ text: message });
+  addRequest.addEventListener("success", () => {
+    console.log("Added " + "#" + addRequest.result + ": " + message);
+    const getRequest = chatStore.get(addRequest.result);
+    getRequest.addEventListener("success", () => {
+      console.log("Found " + JSON.stringify(getRequest.result));
+      
+      navigator.serviceWorker.ready
+        .then((sw) => {
+          sw.sync.register(SYNCH_CHAT_EVENT);
+        })
+        .then(() => {
+          console.log("Sync registered");
+        })
+        .catch((err) => {
+          console.log("Sync registration failed: " + JSON.stringify(err));
+        });
+    });
+  });
+};
 
 // Function to add new ChatMessage to IndexedDB and return a promise
 const addChatMessageToIDB = (chatIDB, messages) => {

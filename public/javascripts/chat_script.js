@@ -24,15 +24,25 @@ function registerFormSubmit() {
 }
 
 function sendMessage() {
-  console.log("Form submitted");
   var input = document.getElementById("chat_input");
-  socket.emit("chat", {
+  var chatMessage = {
     chat_message: input.value,
     user_name: loggedInUserName,
     chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
     plant_id: plantId,
+  };
+
+  openSyncChatsIDB().then((db) => {
+    addNewChatToSync(db, chatMessage);
   });
-  input.value = "";
+
+  // if (navigator.onLine) {
+  //   console.log("Form submitted");
+  //   socket.emit("chat");
+  //   input.value = "";
+  // } else {
+  //   input.value = "";
+  // }
 }
 
 function registerSocket() {
