@@ -5,28 +5,25 @@ const SYNC_CHATS_STORE_NAME = "sync-chats";
 const SYNCH_CHAT_EVENT = "sync-chat";
 
 const addNewChatToSync = (syncChatIDB, message) => {
-  const transaction = syncChatIDB.transaction(
-    [SYNC_CHATS_STORE_NAME],
-    "readwrite"
-  );
-  const chatStore = transaction.objectStore(SYNC_CHATS_STORE_NAME);
-  const addRequest = chatStore.add({ text: message });
-  addRequest.addEventListener("success", () => {
-    console.log("Added " + "#" + addRequest.result + ": " + message);
-    const getRequest = chatStore.get(addRequest.result);
-    getRequest.addEventListener("success", () => {
-      console.log("Found " + JSON.stringify(getRequest.result));
-      
-      navigator.serviceWorker.ready
-        .then((sw) => {
-          sw.sync.register(SYNCH_CHAT_EVENT);
-        })
-        .then(() => {
-          console.log("Sync registered");
-        })
-        .catch((err) => {
-          console.log("Sync registration failed: " + JSON.stringify(err));
-        });
+  return new Promise((resolve, reject) => {
+    const transaction = syncChatIDB.transaction(
+      [SYNC_CHATS_STORE_NAME],
+      "readwrite"
+    );
+    const chatStore = transaction.objectStore(SYNC_CHATS_STORE_NAME);
+    const addRequest = chatStore.add({ value: message });
+    addRequest.addEventListener("success", () => {
+      console.log("Added " + "#" + addRequest.result + ": " + message);
+      const getRequest = chatStore.get(addRequest.result);
+      getRequest.addEventListener("success", () => {
+        resolve(getRequest.result);
+      });
+      getRequest.addEventListener("error", (event) => {
+        reject(event.target.error);
+      });
+    });
+    addRequest.addEventListener("error", (event) => {
+      reject(event.target.error);
     });
   });
 };

@@ -33,7 +33,20 @@ function sendMessage() {
   };
 
   openSyncChatsIDB().then((db) => {
-    addNewChatToSync(db, chatMessage);
+    addNewChatToSync(db, chatMessage).then((data) => {
+      renderChatMessages([data.value]);
+      if (navigator.onLine) {
+        console.log("Chat added to Sync DB");
+        input.value = "";
+        console.log("chatMessage", chatMessage);
+        socket.emit("chat", chatMessage);
+        deleteSyncChatFromIDB(db, data.id);
+      } else {
+        console.log("Chat added to Sync DB");
+        input.value = "";
+        console.log("chatMessage", chatMessage);
+      }
+    });
   });
 
   // if (navigator.onLine) {
@@ -57,9 +70,6 @@ function registerSocket() {
 
   socket.on("chat_message", function (msg) {
     console.log("Received message:", msg);
-    const chatContainer = document.getElementById("chat_messages");
-    const chatMessageDiv = createChatMessageElement(msg);
-    chatContainer.appendChild(chatMessageDiv);
     addChatToDB(msg);
   });
 }
