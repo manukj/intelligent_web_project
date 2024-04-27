@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Plant Sighting</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+<h1>Add Plant Sighting</h1>
+<form action="/submitPlant" method="POST" enctype="multipart/form-data">
+  <!-- Date and time seen -->
+  <label for="date">Date and Time Seen:</label>
+  <input type="datetime-local" id="date" name="date" required>
+
+  <!-- Location -->
+  <label for="location">Location:</label>
+  <input type="text" id="location" name="location" required>
+
+  <!-- Description -->
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" rows="4" cols="50" required></textarea>
+
+  <!-- User Nickname -->
+
+  <label for="nickname">User Nickname:</label>
+  <input type="text" id="nickname" name="nickname" required>
+
+
+  <!-- Plant Size -->
+  <label for="height">Height (in cm):</label>
+  <input type="number" id="height" name="height" required>
+  <label for="spread">Spread (in cm):</label>
+  <input type="number" id="spread" name="spread" required>
+
+  <!-- Plant Characteristics -->
+  <div class="checkbox-group">
+    <label for="flowers">Flowers:</label>
+    <input type="checkbox" id="flowers" name="characteristics" value="flowers">
+
+    <label for="leaves">Leaves:</label>
+    <input type="checkbox" id="leaves" name="characteristics" value="leaves">
+
+    <label for="fruits">Fruits/Seeds:</label>
+    <input type="checkbox" id="fruits" name="characteristics" value="fruits" >
+  </div>
+  <label for="sunExposure">Sun Exposure:</label>
+  <select id="sunExposure" name="sunExposure" style="margin-bottom: 15px;>
+        <option value="full">Full Sun</option>
+  <option value="partial">Partial Sun</option>
+  <option value="shade">Shade</option>
+  </select>
+
+  <!-- Photo Upload -->
+  <div class="image-upload">
+    <label for="photo">Photo Upload:</label>
+    <input type="file" id="photo" name="photo" accept="image/*">
+  </div>
+
+  <!-- Submit button -->
+  <div class="submit-button">
+    <button type="submit">Submit</button>
+  </div>
+</form>
+</body>
+</html>
