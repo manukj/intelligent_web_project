@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Plant Sighting</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+<body class="bg-neutral-200">
+
+<div class="container mx-auto p-4 flex justify-center items-center ">
+  <div class="bg-white rounded-lg shadow-md p-6 w-full md:w-3/4 lg:w-1/2 ">
+
+  <h1 class="text-3xl font-bold mb-4 text-center">Add Plant Sighting</h1>
+  <form action="/submitPlant" method="POST" enctype="multipart/form-data " >
+    <!-- User Nickname and Plant Name -->
+    <div class="mb-4 flex justify-between">
+      <div class="w-1/2 mr-2">
+        <label for="nickname" class="block">User Nickname:</label>
+        <input type="text" id="nickname" name="nickname" required class="border border-gray-300 rounded px-4 py-2 w-full">
+      </div>
+      <div class="w-1/2 ml-2">
+        <label for="plantName" class="block">Plant Name:</label>
+        <input type="text" id="plantName" name="plantName" required class="border border-gray-300 rounded px-4 py-2 w-full">
+      </div>
+    </div>
+    <!-- Date and Time Seen and Location -->
+    <div class="mb-4 flex justify-between">
+      <div class="w-1/2 mr-2">
+        <label for="date" class="block">Date and Time Seen:</label>
+        <input type="datetime-local" id="date" name="date" required class="border border-gray-300 rounded px-4 py-2 w-full">
+      </div>
+      <div class="w-1/2 ml-2">
+        <label for="location" class="block">Location:</label>
+        <input type="text" id="location" name="location" required class="border border-gray-300 rounded px-4 py-2 w-full">
+      </div>
+    </div>
+    <!-- Description -->
+    <div class="mb-4">
+      <label for="description" class="block">Description:</label>
+      <textarea id="description" name="description" rows="3"  required class="border border-gray-300 rounded px-4 py-2 w-full "></textarea>
+    </div>
+
+
+    <!-- Height and Spread -->
+    <div class="mb-4 flex justify-between">
+      <div class="w-1/2 mr-2">
+        <label for="height" class="block">Height (in cm):</label>
+        <input type="number" id="height" name="height" required class="border border-gray-300 rounded px-4 py-2 w-full">
+      </div>
+      <div class="w-1/2 ml-2">
+        <label for="spread" class="block">Spread (in cm):</label>
+        <input type="number" id="spread" name="spread" required class="border border-gray-300 rounded px-4 py-2 w-full">
+      </div>
+    </div>
+
+    <!-- Plant Characteristics  -->
+    <div class="mb-4 flex flex-wrap items-center">
+      <div class="w-full md:w-1/2 md:pr-2 mb-4 md:mb-0">
+      <label class="block">Plant Characteristics:</label>
+      <div class="flex space-x-4">
+        <label for="flowers" class="flex items-center">
+          <input type="checkbox" id="flowers" name="characteristics" value="flowers" class="mr-2" onclick="toggleFlowerColor()" >
+          Flowers
+        </label>
+
+        <label for="leaves" class="flex items-center">
+          <input type="checkbox" id="leaves" name="characteristics" value="leaves" class="mr-2">
+          Leaves
+        </label>
+        <label for="fruits" class="flex items-center">
+          <input type="checkbox" id="fruits" name="characteristics" value="fruits" class="mr-2">
+          Fruits/Seeds
+        </label>
+      </div>
+        <div id="flowerColorField" class="hidden">
+          <label for="flowerColor" class="block font">Flower Color:</label>
+          <input type="text" id="flowerColor" name="flowerColor" class="border border-gray-300 rounded px-4 py-2 w-full">
+        </div>
+
+    </div>
+
+    <!-- Sun Exposure -->
+      <div class="w-full ">
+        <label for="sunExposure" class="block">Sun Exposure:</label>
+        <select id="sunExposure" name="sunExposure" class="border border-gray-300 rounded px-4 py-2 w-full">
+          <option value="full">Full Sun</option>
+          <option value="partial">Partial Sun</option>
+          <option value="shade">Shade</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Photo Upload -->
+    <div class="mb-4">
+      <label for="photo" class="block">Photo Upload:</label>
+      <input type="file" id="photo" name="photo" accept="image/*" class="border border-gray-300 rounded px-4 py-2 w-full">
+    </div>
+
+    <!-- Submit button -->
+    <div class="mb-4">
+      <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+    </div>
+  </form>
+</div>
+  <script>
+    function toggleFlowerColor() {
+      var flowerColorField = document.getElementById("flowerColorField");
+      var flowersCheckbox = document.getElementById("flowers");
+      if (flowersCheckbox.checked) {
+        flowerColorField.classList.remove("hidden");
+      } else {
+        flowerColorField.classList.add("hidden");
+      }
+    }
+  </script>
+</div>
+</body>
+</html>
+
