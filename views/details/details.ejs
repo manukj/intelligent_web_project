@@ -71,6 +71,42 @@
           };
           db.close();
         };
+        function readAllFromIndexedDB(databaseName, storeName) {
+          const request = indexedDB.open(databaseName);
+
+          request.onsuccess = function(event) {
+            const db = event.target.result;
+            const transaction = db.transaction([storeName], "readonly");
+            const store = transaction.objectStore(storeName);
+            const cursorRequest = store.openCursor();
+
+            const allData = [];
+
+            cursorRequest.onsuccess = function(event) {
+              const cursor = event.target.result;
+              if (cursor) {
+                allData.push(cursor.value);  // 将当前记录添加到数组中
+                cursor.continue();  // 移动到下一个记录
+              } else {
+                console.log("读取的所有数据：", allData);  // 当没有更多记录时，打印所有数据
+              }
+            };
+
+            cursorRequest.onerror = function(event) {
+              console.error("读取数据失败", event.target.error);
+            };
+
+            // 完成事务，事务完成后可以自动关闭数据库
+            transaction.oncomplete = function() {
+              db.close();
+            };
+          };
+
+          request.onerror = function(event) {
+            console.log("数据库打开失败", event.target.error);
+          };
+        }
+
         // 当需要升级数据库结构时的处理函数
         request.onupgradeneeded = function(event) {
           var db = event.target.result;
