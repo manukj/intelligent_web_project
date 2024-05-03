@@ -62,17 +62,16 @@
                     <label class="block">Plant Characteristics:</label>
                     <div class="flex space-x-4">
                         <label for="flowers" class="flex items-center">
-                            <input type="checkbox" id=" flowers" name="characteristics" value=" flowers"
-                                   class="checkbox" onclick="toggleFlowerColor()">
+                            <input type="checkbox" id="flowers" name="characteristics" value=" flowers" class="checkbox" onclick="toggleFlowerColor()">
                             Flowers
                         </label>
 
                         <label for="leaves" class="flex items-center">
-                            <input type="checkbox" id=" leaves" name="characteristics" value=" leaves" class="checkbox">
+                            <input type="checkbox" id="leaves" name="characteristics" value=" leaves" class="checkbox">
                             Leaves
                         </label>
                         <label for="fruits" class="flex items-center">
-                            <input type="checkbox" id=" fruits" name="characteristics" value=" fruits" class="checkbox">
+                            <input type="checkbox" id="fruits" name="characteristics" value=" fruits" class="checkbox">
                             Fruits/Seeds
                         </label>
                     </div>
@@ -110,6 +109,7 @@
     </div>
     <script>
         function toggleFlowerColor() {
+            console.log("hhhh")
             var flowerColorField = document.getElementById("flowerColorField");
             var flowersCheckbox = document.getElementById("flowers");
             if (flowersCheckbox.checked) {
