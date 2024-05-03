@@ -3,14 +3,14 @@ exports.dashboardPage = async (req, res, next) => {
 
   const plantData = [
     {
-      name: "Plant 1",
+      name: "Angel trumpet",
       location: "Garden",
       date: "2022-10-01",
       image:
         "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/AngelTrumpet_Mounts_Asit.jpg/2560px-AngelTrumpet_Mounts_Asit.jpg",
     },
     {
-      name: "Plant 2",
+      name: "Angel trumpet",
       location: "Balcony",
       date: "2022-10-02",
       image:
