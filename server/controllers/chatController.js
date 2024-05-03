@@ -1,30 +1,9 @@
 const ChatMessage = require("../models/chat_model");
 
-const mockChatMessage = [
-  {
-    chat_message: "Hello",
-    user_name: "John",
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: "1",
-  },
-  {
-    chat_message: "How are you?",
-    user_name: "Mark",
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: "1",
-  },
-  {
-    chat_message: "I'm good, thanks!",
-    user_name: "John",
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: "1",
-  },
-];
-
 exports.chatPage = async (req, res, next) => {
   const plant_id = req.params.plant_id;
   const user_name = req.params.user_name;
-  res.render("chat/chat", {
+  res.render("details/chat", {
     userName: user_name,
     plantId: plant_id,
   });
@@ -43,7 +22,7 @@ exports.getChatMessagesByPlantId = async (req, res, next) => {
     })
     .catch((err) => {
       console.error("Error retrieving chat messages: ", err);
-      res.json("Error retrieving chat messages: ", err);
+      res.json("Error retrieving chat messages: ");
     });
 };
 
@@ -72,6 +51,10 @@ exports.addChatMessage = async (req, res, next) => {
     })
     .catch((err) => {
       console.error("Error adding chat message: ", err);
-      res.json("Error adding chat message: ", err);
+      return res.status(500).json({
+        success: false,
+        message: "Error fetching data",
+        error: err.message, // Provides more specific error detail
+      });
     });
 };
