@@ -13,9 +13,11 @@
     <link rel="manifest" href="/manifest.json" />
   </head>
   <div class="flex flex-col h-screen w-full lg:flex-row">
-    <%- include('./details_component.ejs',{data:data}) %>
-    <div class="lg:w-1/3 py-10 shadow-2xl border border-neutral">
-      <%- include('./chat.ejs', { plantId: "100" , userName: "Mark" }) %>
+    <div class="lg:w-1/2 m-5">
+      <%- include('./details_component.ejs',{data:data}) %>
+    </div>
+    <div class="lg:w-1/2 m-5">
+      <%- include('./chat.ejs', { plantId: "100" , userName: user_name }) %>
     </div>
   </div>
 </html>
