@@ -1,72 +1,20 @@
-<div class="lg:w-2/3 bg-white text-6xl flex lg:flex-row flex-col items-center">
-    <div class="card lg:card-side bg-base-100 shadow-xl ">
-        <div class="flex h-50 w-1/2 rounded">
-            <img src="https://img0.baidu.com/it/u=646433330,2318109367&fm=253&fmt=auto?w=889&h=500" alt="">
-        </div>
-
-
-        <div class="card-body">
-            <div class="my-auto h-full my-5 w-full flex flex-col items-center ">
-                <h1 class="text-2xl font-semibold text-gray-800">plant detail</h1>
-                <div class="mt-2 w-full text-base text-gray-400">
-                    <div class="overflow-x-auto">
-                        <table class="table">
-                            <!-- head -->
-                            <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Job</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <!-- row 1 -->
-                            <tr class="hover">
-                                <td>Cy Ganderton</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <!-- row 2 -->
-                            <tr class="hover">
-                                <td>Hart Hagerty</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <!-- row 3 -->
-                            <tr class="hover">
-                                <td>Brice Swyre</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <tr class="hover">
-                                <td>Hart Hagerty</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <!-- row 3 -->
-                            <tr class="hover">
-                                <td>Brice Swyre</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <tr class="hover">
-                                <td>Hart Hagerty</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <!-- row 3 -->
-                            <tr class="hover">
-                                <td>Brice Swyre</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <tr class="hover">
-                                <td>Hart Hagerty</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            <!-- row 3 -->
-                            <tr class="hover">
-                                <td>Brice Swyre</td>
-                                <td><%= data.name %></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="w-full p-10">
+  <div class="card w-full glass">
+    <figure>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/AngelTrumpet_Mounts_Asit.jpg/2560px-AngelTrumpet_Mounts_Asit.jpg"
+        alt="car!"
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">Angel trumpet</h2>
+      <%- include("./key_value",{data:"Created by",value:"Manu"}) %> <%-
+      include("./key_value",{data:"Location",value:"40.753°N, 73.983°W."}) %>
+      <%- include("./key_value",{data:"Height",value:"50 feet"}) %> <%-
+      include("./key_value",{data:"Spread",value:"100 feet"}) %>
+      <div class="card-actions justify-end">
+        <div class="badge p-2 badge-primary">Flower</div>
+      </div>
     </div>
+  </div>
 </div>
-
