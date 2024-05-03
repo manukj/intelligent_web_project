@@ -1,0 +1,12 @@
+<script src="/javascripts/dashboard_script.js"></script>
+
+<div class="card shadow-lg p-4 bg-white" onclick="showDetailsPage(1)">
+  <h3 class="text-lg font-medium text-gray-800">Spotted a Plant!</h3>
+  <p class="text-gray-600">Location: <%= plant.location %></p>
+  <p class="text-gray-600">Date/Time: <%= plant.dateTime %></p>
+  <img
+    src="<%= plant.image %>"
+    alt="<%= plant.name %>"
+    class="w-full h-48 rounded-md object-contain"
+  />
+</div>
