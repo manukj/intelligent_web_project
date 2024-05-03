@@ -3,6 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 let plantId = "";
 let loggedInUserName = "";
 var chatMessages = [];
+var totalUsersOnlineInRoom = 0;
 
 function init() {
   joinPlantChatRoom();
@@ -67,13 +68,22 @@ function sendMessage() {
 }
 
 function registerSocket() {
-  socket.on("joined", function (room, userId) {
-    console.log("user " + userId + " joined Room: " + room);
+  socket.on("joined", function (room, userId, totalUsers) {
+    totalUsersOnlineInRoom = totalUsers;
+    const totalOnlineField = document.getElementById("totalOnline");
+    totalOnlineField.textContent = totalUsersOnlineInRoom;
+    console.log(
+      "user " + userId + " joined Room: " + room + " Total Users: " + totalUsers
+    );
     if (userId === loggedInUserName) {
       console.log("You joined the room");
     } else {
       console.log("Someone joined the room");
     }
+  });
+
+  socket.on("left", function (room, userId, totalUsers) {
+    console.log("user " + userId + " left Room: " + room);
   });
 
   socket.on("chat_message", function (msg) {
@@ -145,7 +155,7 @@ function createChatMessageElement(message) {
   const chatImageDiv = document.createElement("div");
   chatImageDiv.classList.add("chat-image", "avatar");
   chatImageDiv.innerHTML = `
-    <div class="avatar placeholder rounded-full border bg-neutral shadow-2xl">
+    <div class="avatar placeholder rounded-full border bg-neutral ">
       <div class="text-neutral-content rounded-full w-10">
         <span class="text-lg font-extrabold">${message.user_name
           .substring(0, 2)
