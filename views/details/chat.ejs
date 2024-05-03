@@ -22,16 +22,22 @@
 
 <body onload="init()">
 
-  <div class="flex flex-col h-full">
-    <div class="flex flex-col h-full mx-5" id="chat_messages">
+  <div class="flex flex-col h-full card w-full glass">
+    <div class="p-4 border-b-2 flex flex-row justify-between">
+      Chat on : Angel trumpet
+      <div class="flex flex-row items-center">
+        <div class="rounded-full bg-green-700  w-4 h-4 shadow-xl"></div>
+        <div id="totalOnline" class="px-1"></div>
+        Online
+      </div>
     </div>
-    <form action="" id="chat_form">
-      <div class="mx-5 flex flex-row h-11 ">
-        <input type="text" name="text"  placeholder="Type your message here" class="w-full h-11 p-2 border border-primary rounded" id="chat_input" />
-        <button class=" h-11 px-4 mx-2  btn btn-neutral rounded">
+    <div class="flex flex-col h-full mx-5 overflow-scroll py-9" id="chat_messages">
+    </div>
+    <form action="" id="chat_form" class="  flex flex-row w-full border-t-2 place-content-center items-center p-3">
+        <input type="text" name="text"  placeholder="Type your message here" class="w-full h-11 p-2 mr-2" id="chat_input" />
+        <button class=" btn btn-neutral rounded">
           Send
         </button>
-      </div>
     </form>
   </div>
   </div>
