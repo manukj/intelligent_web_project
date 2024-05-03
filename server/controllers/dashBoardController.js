@@ -7,85 +7,14 @@ exports.dashboardPage = async (req, res, next) => {
       location: "Garden",
       date: "2022-10-01",
       image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/AngelTrumpet_Mounts_Asit.jpg/2560px-AngelTrumpet_Mounts_Asit.jpg",
     },
     {
       name: "Plant 2",
       location: "Balcony",
       date: "2022-10-02",
       image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
-    },
-    {
-      name: "Plant 2",
-      location: "Balcony",
-      date: "2022-10-02",
-      image:
-        "https://img.freepik.com/free-psd/monstera-deliciosa-png-isolated-transparent-background_191095-11918.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/AngelTrumpet_Mounts_Asit.jpg/2560px-AngelTrumpet_Mounts_Asit.jpg",
     },
     // Add more plant details as needed
   ];
