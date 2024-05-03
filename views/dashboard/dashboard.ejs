@@ -1,38 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="cupcake">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
     <title>Plant Sightings Dashboard</title>
-    <link href="/css/output.css" rel="stylesheet"/>
-    <link rel="manifest" href="/manifest.json"/>
-</head>
-<body>
-<div class="grid grid-rows-4 grid-flow-col gap-4 ">
-  <div>01</div>
-  <div>01</div>
-  <div>01</div>
-</div>
-<div class="flex flex-col min-h-screen bg-gray-100">
-    <header class="bg-white shadow-md py-4 px-6 flex justify-between items-center">
+    <link href="/css/output.css" rel="stylesheet" />
+    <link rel="manifest" href="/manifest.json" />
+  </head>
+  <body>
+    <div class="flex flex-col h-screen">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 mt-20">
+        <% plantData.forEach(function(plant) { %> <%-
+        include('./plant_item_component.ejs', { plant: plant }) %> <% }) %>
+      </div>
+
+      <button
+        class="btn btn-neutral shadow-2xl btn-lg fixed bottom-10 right-10 text-4xl text-white"
+        onclick="showDetails('add_plant.ejs')"
+      >
+        +
+        <div class="text-lg">Add Plant</div>
+      </button>
+
+      <header
+        class="bg-white shadow-md py-4 px-6 flex justify-between w-full fixed"
+      >
         <h1 class="text-xl font-bold text-gray-800">Plant Sightings</h1>
-        <button class="px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-md"
-                onclick="showDetails('add_plant.ejs')">Add Plant
-        </button>
-    </header>
-
-    <div class="grid grid-rows-4 grid-flow-col gap-4 ">
-      <div>01</div>
-      <div>01</div>
-      <div>01</div>
+      </header>
     </div>
-
-</div>
-
-<script>
-    function showDetails(detailsPage) {
-        window.location.href = detailsPage;
-    }
-</script>
-</body>
+    <%- include('../components/online_offline_mode.ejs') %>
+  </body>
 </html>
