@@ -1,1 +1,28 @@
-<div class="lg:w-2/3 bg-neutral p-10 text-6xl">Song Write the Details Code Here</div>
+<div class="card w-full glass h-full">
+  <figure>
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/AngelTrumpet_Mounts_Asit.jpg/2560px-AngelTrumpet_Mounts_Asit.jpg"
+      alt="car!"
+    />
+  </figure>
+  <div class="card-body">
+    <h2 class="card-title">Angel trumpet</h2>
+    <%- include("./key_value",{data:"Created by",value:"Manu"}) %> <%-
+    include("./key_value",{data:"Location",value:"40.753°N, 73.983°W."}) %> <%-
+    include("./key_value",{data:"Height",value:"50 feet"}) %> <%-
+    include("./key_value",{data:"Spread",value:"100 feet"}) %>
+    <div class=" flex flex-row ">
+      <div class=" font-bold">Sun Exposure:</div>
+      <img class="h-6 w-6 object-contain" src="<% if ('sunExposure' === 'sunExposure') { %>
+                 /images/fullsun.png
+             <% } else if ('value' === 'partialExposure') { %>
+                  /images/halfsun.png
+             <% } else { %>
+                /images/shade.png
+             <% } %>" alt="Conditional Image">
+    </div>
+    <div class="card-actions justify-end">
+      <div class="badge p-2 badge-primary">Flower</div>
+    </div>
+  </div>
+</div>
