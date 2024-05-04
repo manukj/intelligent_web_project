@@ -8,7 +8,6 @@
   </script> -->
 
   <head>
-    <%- include('../components/online_offline_mode.ejs') %>
     <link href="/css/output.css" rel="stylesheet" />
     <link rel="manifest" href="/manifest.json" />
   </head>
@@ -20,4 +19,5 @@
       <%- include('./chat.ejs', { plantId: "100" , userName: user_name }) %>
     </div>
   </div>
+  <%- include('../components/online_offline_mode.ejs') %>
 </html>
