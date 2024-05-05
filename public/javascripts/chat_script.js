@@ -117,9 +117,15 @@ function registerSocket() {
 }
 
 function addChatToDB(message) {
-  fetch(
-    `/chat/addChatMessage/${plantId}/${loggedInUserName}/${message.chat_message}`
-  )
+  fetch(`/chat/addChatMessage`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      chatMessage: message,
+    }),
+  })
     .then(async (response) => {
       if (response.ok) {
         return response.json();

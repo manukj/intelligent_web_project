@@ -6,6 +6,10 @@ let ChatSchema = new Schema({
   user_name: { type: String, required: true },
   chat_time: { type: Date, required: true },
   plant_id: { type: String, required: true },
+  suggestedName: {
+    name: { type: String, required: false },
+    isApprovedByOwner: { type: Boolean, required: false, default: false },
+  },
 });
 
 // Configure the 'toObject' option for the schema to include getters
