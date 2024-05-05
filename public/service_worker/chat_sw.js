@@ -10,7 +10,7 @@ self.addEventListener("install", (event) => {
         await cache.addAll([
           "/",
           "/css/output.css",
-          "/javascripts/chat_script.js",
+          "/javascripts/chat/chat_script.js",
           "/chat/room",
           "/chat/addChatMessage",
         ]);
