@@ -6151,6 +6151,14 @@ details.collapse summary::-webkit-details-marker{
   height: 100vh;
 }
 
+.h-8{
+  height: 2rem;
+}
+
+.h-5{
+  height: 1.25rem;
+}
+
 .min-h-max{
   min-height: -moz-max-content;
   min-height: max-content;
@@ -6210,6 +6218,10 @@ details.collapse summary::-webkit-details-marker{
 
 .w-screen{
   width: 100vw;
+}
+
+.w-8{
+  width: 2rem;
 }
 
 .max-w-\[200px\]{
@@ -6461,6 +6473,10 @@ details.collapse summary::-webkit-details-marker{
 
 .rounded-md{
   border-radius: 0.375rem;
+}
+
+.rounded-sm{
+  border-radius: 0.125rem;
 }
 
 .rounded-e-\[0\.25rem\]{

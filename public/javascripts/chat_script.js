@@ -185,9 +185,9 @@ function createChatMessageElement(message) {
   const chatImageDiv = document.createElement("div");
   chatImageDiv.classList.add("chat-image", "avatar");
   chatImageDiv.innerHTML = `
-    <div class="avatar placeholder rounded-full border bg-neutral ">
-      <div class="text-neutral-content rounded-full w-10">
-        <span class="text-lg font-extrabold">${message.user_name
+    <div class="avatar placeholder rounded-full border bg-neutral  p-1">
+      <div class="text-neutral-content rounded-full bg-white  w-8">
+        <span class="text font-extrabold text-neutral">${message.user_name
           .substring(0, 2)
           .toUpperCase()}</span>
       </div>
