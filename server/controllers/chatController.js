@@ -27,7 +27,7 @@ exports.getChatMessagesByPlantId = async (req, res, next) => {
 };
 
 exports.addChatMessage = async (req, res, next) => {
-  const chatMessage = (req.body.chatMessage);
+  const chatMessage = req.body.chatMessage;
   const timestamp = new Date()
     .toISOString()
     .replace(/T/, " ")
@@ -38,7 +38,6 @@ exports.addChatMessage = async (req, res, next) => {
     user_name: chatMessage.user_name,
     chat_time: chatMessage.chat_time || timestamp,
     plant_id: chatMessage.plant_id,
-
   });
 
   console.log("Adding chat message: ", newChatMessage);

@@ -3,7 +3,6 @@ const urlParams = new URLSearchParams(window.location.search);
 let plantId = "";
 let loggedInUserName = "";
 var chatMessages = [];
-var totalUsersOnlineInRoom = 0;
 
 function init() {
   joinPlantChatRoom();
@@ -64,14 +63,31 @@ function registerFormSubmit() {
   }
 }
 
-function sendMessage() {
+function sendMessage(isSuggestingName = false) {
   var input = document.getElementById("chat_input");
-  var chatMessage = {
-    chat_message: input.value,
-    user_name: loggedInUserName,
-    chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
-    plant_id: plantId,
-  };
+  if (input.value === "") {
+    return;
+  }
+  var chatMessage = {};
+  if (isSuggestingName) {
+    chatMessage = {
+      chat_message: input.value,
+      user_name: loggedInUserName,
+      chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+      plant_id: plantId,
+      suggested_name: {
+        name: input.value,
+        isApprovedByOwner: false,
+      },
+    };
+  } else {
+    chatMessage = {
+      chat_message: input.value,
+      user_name: loggedInUserName,
+      chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
+      plant_id: plantId,
+    };
+  }
 
   openSyncChatsIDB().then((db) => {
     addNewChatToSync(db, chatMessage).then((data) => {
@@ -93,12 +109,6 @@ function sendMessage() {
 
 function registerSocket() {
   socket.on("joined", function (room, userId, totalUsers) {
-    totalUsersOnlineInRoom = totalUsers;
-    const totalOnlineField = document.getElementById("totalOnline");
-    totalOnlineField.textContent = totalUsersOnlineInRoom;
-    console.log(
-      "user " + userId + " joined Room: " + room + " Total Users: " + totalUsers
-    );
     if (userId === loggedInUserName) {
       console.log("You joined the room");
     } else {
@@ -169,6 +179,7 @@ function getChatHistory(plant_id) {
 function renderChatMessages(chatMessages) {
   const chatContainer = document.getElementById("chat_messages");
   chatMessages.forEach((message) => {
+    message.chat_time = message.chat_time.replace(/T/, " ").replace(/\..+/, "");
     const chatMessageDiv = createChatMessageElement(message);
     chatContainer.appendChild(chatMessageDiv);
   });
@@ -199,6 +210,11 @@ function createChatMessageElement(message) {
   chatHeaderDiv.textContent = message.user_name;
 
   const chatBubbleDiv = document.createElement("div");
+  if (message.suggested_name) {
+    chatBubbleDiv.classList.add("chat-bubble");
+  } else {
+    chatBubbleDiv.classList.add("chat-bubble", "chat-bubble-primary");
+  }
   chatBubbleDiv.classList.add("chat-bubble");
   chatBubbleDiv.textContent = message.chat_message;
 
