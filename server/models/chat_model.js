@@ -8,7 +8,7 @@ let ChatSchema = new Schema({
   plant_id: { type: String, required: true },
   suggested_name: {
     name: { type: String, required: false },
-    isApprovedByOwner: { type: Boolean, required: false, default: false },
+    isApprovedByOwner: { type: Boolean, required: false },
   },
 });
 
