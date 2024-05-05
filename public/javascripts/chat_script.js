@@ -14,7 +14,13 @@ function init() {
 }
 
 function listenForOnlineSync() {
+  if (navigator.onLine) {
+    changeOnlineStatus(true);
+  } else {
+    changeOnlineStatus(false);
+  }
   window.addEventListener("online", function () {
+    changeOnlineStatus(true);
     console.log("You are now online.");
     openSyncChatsIDB().then((db) => {
       getAllSyncChatMessages(db).then((syncChats) => {
@@ -26,6 +32,24 @@ function listenForOnlineSync() {
       });
     });
   });
+  window.addEventListener("offline", function () {
+    changeOnlineStatus(false);
+    console.log("You are now offline.");
+  });
+}
+
+function changeOnlineStatus(isOnline) {
+  const onlineColorDiv = document.getElementById("onlineColor");
+  const onlineText = document.getElementById("onlineText");
+  if (isOnline) {
+    onlineText.innerHTML = "Online";
+    onlineColorDiv.classList.add("bg-green-500");
+    onlineColorDiv.classList.remove("bg-red-500");
+  } else {
+    onlineText.innerHTML = "Offline";
+    onlineColorDiv.classList.add("bg-red-500");
+    onlineColorDiv.classList.remove("bg-green-500");
+  }
 }
 
 function registerFormSubmit() {
