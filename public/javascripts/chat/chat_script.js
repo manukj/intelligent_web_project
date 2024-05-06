@@ -180,9 +180,17 @@ function getChatHistory(plant_id) {
 function renderChatMessages(chatMessages) {
   const chatContainer = document.getElementById("chat_messages");
   chatMessages.forEach((message) => {
-    message.chat_time = message.chat_time.replace(/T/, " ").replace(/\..+/, "");
+    let chatTime = new Date(message.chat_time);
+    let formattedChatTime = chatTime.toLocaleString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+    message.chat_time = formattedChatTime;
     const chatMessageDiv = createChatMessageElement(message);
     chatContainer.appendChild(chatMessageDiv);
   });
 }
-

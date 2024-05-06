@@ -34,9 +34,9 @@ function createChatMessageElement(message) {
 }
 function createChatBubble(message) {
   const chatBubbleDiv = document.createElement("div");
-  chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row");
+  chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row","shadow-2xl","shadow-neutral-800");
   if (message.suggested_name && message.suggested_name.name) {
-    chatBubbleDiv.classList.add("shadow-2xl","shadow-info-3");
+    chatBubbleDiv.classList.add("shadow-info-3");
   }
 
   // Creating and styling the label for "Suggested Name:"
@@ -71,7 +71,7 @@ function createChatFooter(chat, name = "Mark") {
   if (chat.suggested_name && chat.suggested_name.name) {
     if (chat.suggested_name.isApprovedByOwner) {
       const approvedDiv = document.createElement("div");
-      approvedDiv.className = "text-xs opacity-50 text-success";
+      approvedDiv.className = "text-xs opacity-50 text-success mt-1 font-bold";
       approvedDiv.textContent = "✅︎ Approved by " + plantOwner;
       chatFooterDiv.appendChild(approvedDiv);
     } else {
@@ -87,7 +87,7 @@ function createChatFooter(chat, name = "Mark") {
         chatFooterDiv.appendChild(approveBtn);
       } else {
         const pendingApprovalDiv = document.createElement("div");
-        pendingApprovalDiv.className = "text-xs opacity-50 text-error mt-1";
+        pendingApprovalDiv.className = "text-xs opacity-50 text-error mt-1 font-bold";
         pendingApprovalDiv.textContent = "⏰ Pending " + plantOwner + " Approval";
         chatFooterDiv.appendChild(pendingApprovalDiv);
       }

@@ -1,4 +1,4 @@
-<div class="toast toast-center hidden w-1/3 " id="toast">
+<div class="toast toast-center hidden w-1/3" id="toast">
   <div
     class="alert alert-error w-full text-white flex place-content-center place-items-center items-center"
   >
@@ -25,11 +25,17 @@
     document.getElementById("toast").classList.add("hidden");
   } else {
     document.getElementById("toast").classList.remove("hidden");
+    setTimeout(function () {
+      document.getElementById("toast").classList.add("hidden");
+    }, 3000);
   }
 
   window.addEventListener("offline", function () {
     console.log("Disconnected...so sad!!!");
     document.getElementById("toast").classList.remove("hidden");
+    setTimeout(function () {
+      document.getElementById("toast").classList.add("hidden");
+    }, 3000);
   });
   window.addEventListener("online", function () {
     console.log("Connected...yay!!!");
