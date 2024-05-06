@@ -3,6 +3,7 @@ const urlParams = new URLSearchParams(window.location.search);
 let plantId = "";
 let loggedInUserName = "";
 var chatMessages = [];
+var plantOwner = "[replacethis]";
 
 function init() {
   joinPlantChatRoom();

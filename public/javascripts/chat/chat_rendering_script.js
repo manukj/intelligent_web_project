@@ -36,13 +36,13 @@ function createChatBubble(message) {
   const chatBubbleDiv = document.createElement("div");
   chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row");
   if (message.suggested_name && message.suggested_name.name) {
-    chatBubbleDiv.classList.add("chat-bubble-primary");
+    chatBubbleDiv.classList.add("shadow-2xl","shadow-info-3");
   }
 
   // Creating and styling the label for "Suggested Name:"
   const nameLabel = document.createElement("span");
   nameLabel.textContent = "Suggested Name: ";
-  nameLabel.classList.add("text-green-900", "px-2", "font-bold"); // Applying the grey color to the label
+  nameLabel.classList.add("text-green-200", "px-2", "font-bold",); // Applying the grey color to the label
 
   // Creating and appending the message text element
   const messageText = document.createElement("span");
@@ -72,10 +72,10 @@ function createChatFooter(chat, name = "Mark") {
     if (chat.suggested_name.isApprovedByOwner) {
       const approvedDiv = document.createElement("div");
       approvedDiv.className = "text-xs opacity-50 text-success";
-      approvedDiv.textContent = "Approved by Mark";
+      approvedDiv.textContent = "✅︎ Approved by " + plantOwner;
       chatFooterDiv.appendChild(approvedDiv);
     } else {
-      if (chat.user_name === "Mark") {
+      if (chat.user_name === loggedInUserName) {
         const approveBtn = document.createElement("div");
         approveBtn.className = "btn btn-link btn-xs w-fit";
 
@@ -87,8 +87,8 @@ function createChatFooter(chat, name = "Mark") {
         chatFooterDiv.appendChild(approveBtn);
       } else {
         const pendingApprovalDiv = document.createElement("div");
-        pendingApprovalDiv.className = "text-xs opacity-50 text-error";
-        pendingApprovalDiv.textContent = "Pending Mark's Approval";
+        pendingApprovalDiv.className = "text-xs opacity-50 text-error mt-1";
+        pendingApprovalDiv.textContent = "⏰ Pending " + plantOwner + " Approval";
         chatFooterDiv.appendChild(pendingApprovalDiv);
       }
     }
