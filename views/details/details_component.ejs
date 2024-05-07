@@ -11,16 +11,21 @@
     include("./key_value",{data:"Location",value:"40.753°N, 73.983°W."}) %> <%-
     include("./key_value",{data:"Height",value:"50 feet"}) %> <%-
     include("./key_value",{data:"Spread",value:"100 feet"}) %>
-    <div class=" flex flex-row ">
-      <div class=" font-bold">Sun Exposure:</div>
-      <img class="h-6 w-6 object-contain" src="<% if ('sunExposure' === 'sunExposure') { %>
+    <div class="flex flex-row">
+      <div class="font-bold">Sun Exposure:</div>
+      <img
+        class="h-6 w-6 object-contain"
+        src="<% if ('sunExposure' === 'sunExposure') { %>
                  /images/fullsun.png
              <% } else if ('value' === 'partialExposure') { %>
                   /images/halfsun.png
              <% } else { %>
                 /images/shade.png
-             <% } %>" alt="Conditional Image">
+             <% } %>"
+        alt="Conditional Image"
+      />
     </div>
+    <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
     <div class="card-actions justify-end">
       <div class="badge p-2 badge-primary">Flower</div>
     </div>

@@ -3,7 +3,7 @@ const { detailsPage, savePlant, searchPlant} = require("../controllers/detailsCo
 const plantModel = require("../models/plant");
 var router = express.Router();
 
-router.get("/:plant_id/:user_name", detailsPage);
+router.get("/:plant_name/:user_name", detailsPage);
 
 router.post('/save', savePlant);
 
