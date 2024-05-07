@@ -1,13 +1,19 @@
 const plantModel = require("../models/plant");
 const { ObjectId } = require("mongodb");
-const {response} = require("express");
+const { response } = require("express");
 exports.detailsPage = async (req, res, next) => {
   const plantModel = require("../models/plant");
   const user_name = req.params.user_name;
+  const plant_name = req.params.plant_name;
+  var dbpediaResult = await getPlantDetails(plant_name);
   try {
     const data = await plantModel.findById(req.params.plant_id);
     console.log(data);
-    res.render("details/details", { data, user_name: user_name });
+    res.render("details/details", {
+      data,
+      user_name: user_name,
+      dbpediaResult: dbpediaResult,
+    });
   } catch (e) {
     console.error(e);
     res.status(404).send();
@@ -23,13 +29,14 @@ exports.savePlant = async (req, res, next) => {
     res.status(500).send(e);
   }
 };
-exports.searchPlant = async (req, res, next) => {
-  const plantName = req.query.plantName;
 
-  const resource = `http://dbpedia.org/resource/${encodeURIComponent(plantName)}`;
-  const endpointUrl = 'https://dbpedia.org/sparql';
+async function getPlantDetails(plantName) {
+  const resource = `http://dbpedia.org/resource/${encodeURIComponent(
+    plantName
+  )}`;
+  const endpointUrl = "https://dbpedia.org/sparql";
 
-  const sqarqlQuery=`
+  const sqarqlQuery = `
     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
     PREFIX dbo: <http://dbpedia.org/ontology/>
     
@@ -41,34 +48,29 @@ exports.searchPlant = async (req, res, next) => {
     }`;
 
   const encodedQuery = encodeURIComponent(sqarqlQuery);
-  const url= `${endpointUrl}?query=${encodedQuery}&format=json`;
+  const url = `${endpointUrl}?query=${encodedQuery}&format=json`;
+  var result;
+  try {
+    result = await fetch(url).then((response) => response.json());
+    console.log(JSON.stringify(result));
+  } catch (error) {
+    console.log(error);
+  }
+  return result;
+}
 
-  fetch(url).then(response=>response.json())
-      .then(data=>{
-        if (data.results.bindings.length > 0) {
-          let bindings = data.results.bindings;
-          let result = JSON.stringify(bindings);
-          console.log(data)
-          console.log("11111111111111")
-          console.log(result)
-          res.render('details/details', {
-            plantName: bindings[0].name.value,
-            description: bindings[0].description.value,
-            JSONresult: result
-          });
-        } else {
-          res.render('details/details', {
-            name: 'No results found',
-            description: 'Try a different plant name',
-            JSONresult: null
-          });
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        res.render('result', {
-          name: 'Error',
-          description: 'Failed to fetch data'
-        });
-      });
+exports.searchPlant = async (req, res, next) => {
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.results.bindings.length > 0) {
+        let bindings = data.results.bindings;
+        let result = JSON.stringify(bindings);
+        console.log(data);
+        console.log("11111111111111");
+        console.log(result);
+      } else {
+      }
+    })
+    .catch((error) => {});
 };
