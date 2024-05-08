@@ -1,0 +1,21 @@
+<div id="flowerColorField" class="hidden">
+    <label for="flowerColor" class="block font">Flower Color:</label>
+    <input
+            type="text"
+            id="flowerColor"
+            name="flowerColor"
+            class="input input-bordered w-full max-w-xs"
+    />
+</div>
+
+<script>
+    function toggleFlowerColor() {
+        var flowerColorField = document.getElementById("flowerColorField");
+        var flowersCheckbox = document.getElementById("flowers");
+        if (flowersCheckbox.checked) {
+            flowerColorField.classList.remove("hidden");
+        } else {
+            flowerColorField.classList.add("hidden");
+        }
+    }
+</script>
