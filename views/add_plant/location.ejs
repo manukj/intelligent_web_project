@@ -1,20 +1,19 @@
-<!-- Location Symbol (Styled as a Button) -->
-<i class="fas fa-map-marker-alt location-button" id="updateLocationBtn" title="Update Location"></i>
-<script>
-    document.getElementById('updateLocationBtn').addEventListener('click', function() {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function(position) {
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
-                    document.getElementById('location').value = latitude + ', ' + longitude;
-                },
-                function(error) {
-                    console.log('Error getting location:', error);
-                }
-            );
-        } else {
-            console.log('Geolocation is not supported by this browser.');
-        }
-    });
-</script>
+<div class="w-full sm:ml-2">
+  <label for="location" class="block">Location:</label>
+  <div class="flex">
+    <input
+      type="text"
+      id="location"
+      name="location"
+      required
+      class="input input-bordered w-full max-w-xs mr-2"
+      placeholder="Click the icon to get current location"
+      readonly
+    />
+    <i
+      class="fas fa-map-marker-alt text-2xl btn rounded-lg place-content-center btn-neutral transition ease-in-out delay-150  hover:-translate-y-1 hover:scale-110  duration-300"
+      id="updateLocationBtn"
+      title="Update Location"
+    ></i>
+  </div>
+</div>
