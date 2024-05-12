@@ -2,7 +2,7 @@
 const PLANT_IDB_NAME = "plant";
 const PLANT_DETAILS_STORE_NAME = "plantDetails";
 const SYNC_PLANTS_STORE_NAME = "sync-plants";
-const SYNCH_PLANT_EVENT = "sync-plant";
+const SYNC_PLANT_EVENT = "sync-plant";
 
 const addNewPlantToSync = (syncPlantIDB, plantDetails) => {
     return new Promise((resolve, reject) => {
