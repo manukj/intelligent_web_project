@@ -3,6 +3,7 @@ const PLANT_IDB_NAME = "plant";
 const PLANT_DETAILS_STORE_NAME = "plantDetails";
 const SYNC_PLANTS_STORE_NAME = "sync-plants";
 const SYNC_PLANT_EVENT = "sync-plant";
+const SYNC_PLANT_DB = "syncPlantDB"
 
 const addNewPlantToSync = (syncPlantIDB, plantDetails) => {
     return new Promise((resolve, reject) => {
@@ -59,10 +60,10 @@ const deleteSyncPlantFromIDB = (syncPlantIDB, id) => {
 
 function openSyncPlantIDB() {
     return new Promise((resolve, reject) => {
-        const request = indexedDB.open("syncPlantDB", 1);
+        const request = indexedDB.open(SYNC_PLANTS_STORE_NAME, 1);
 
         request.onerror = function (event) {
-            reject(new Error("IndexedDB error: " + event.target.errorCode));
+            reject(new Error("IndexedDB error: " + event.target));
         };
 
         request.onsuccess = function (event) {
@@ -72,9 +73,10 @@ function openSyncPlantIDB() {
 
         request.onupgradeneeded = function (event) {
             const db = event.target.result;
-            const objectStore = db.createObjectStore("syncPlants", { keyPath: "id", autoIncrement: true });
-            objectStore.createIndex("value", "value", { unique: false });
+            db.createObjectStore(SYNC_PLANTS_STORE_NAME, {
+                keyPath: "id",
+                autoIncrement: true,
+            });
         };
     });
 }
-

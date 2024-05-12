@@ -1,7 +1,7 @@
 function init() {
     listenToLocationUpdate();
     registerFormSubmit();
-    listenForOnlineSync();
+    // listenForOnlineSync();
 }
 
 function listenToLocationUpdate() {
@@ -41,14 +41,14 @@ function registerFormSubmit() {
     if (plantForm) {
         plantForm.addEventListener("submit", function (event) {
             event.preventDefault();
-            sendMessage();
+            addNewPlantDetails();
         });
     } else {
         console.error("plantForm element not found");
     }
 }
 
-function sendMessage() {
+function addNewPlantDetails() {
     const plantName = document.getElementById("plantName").value;
     const date = document.getElementById("date").value;
     const location = document.getElementById("location").value;
@@ -77,17 +77,19 @@ function sendMessage() {
 
     openSyncPlantIDB().then((db) => {
         addNewPlantToSync(db, plantDetails).then((data) => {
+            console.log("added data inside Index db",data)
             if (navigator.onLine) {
                 console.log("Plant added to Sync DB");
-                // Send plantDetails to the server or perform any other action
+                submitPlantDetails(plantDetails)
             } else {
                 console.log("Plant added to Sync DB");
+                window.location.href = '/dashboard';
             }
         });
     });
 }
 function submitPlantDetails(plantDetails) {
-    fetch('/submitPlant', {
+    fetch('/addNewPlant', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -145,25 +147,5 @@ function changeOnlineStatus(isOnline) {
     }
 }
 
-function openSyncPlantIDB() {
-    return new Promise((resolve, reject) => {
-        const request = indexedDB.open("syncPlantDB", 1);
-
-        request.onerror = function (event) {
-            reject(new Error("IndexedDB error: " + event.target.errorCode));
-        };
-
-        request.onsuccess = function (event) {
-            const db = event.target.result;
-            resolve(db);
-        };
-
-        request.onupgradeneeded = function (event) {
-            const db = event.target.result;
-            const objectStore = db.createObjectStore("syncPlants", { keyPath: "id", autoIncrement: true });
-            objectStore.createIndex("value", "value", { unique: false });
-        };
-    });
-}
 
 
