@@ -83,14 +83,14 @@ function addNewPlantDetails() {
                 submitPlantDetails(plantDetails)
             } else {
                 console.log("Plant added to Sync DB");
-                window.location.href = '/dashboard';
+                window.location.href = '/';
             }
         });
     });
 }
 function submitPlantDetails(plantDetails) {
 
-    fetch('/addNewPlant', {
+    fetch('addPlant/addNewPlant', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -100,7 +100,7 @@ function submitPlantDetails(plantDetails) {
         .then(response => {
             if (response.ok) {
                 // Redirect to the dashboard page
-                window.location.href = '/dashboard';
+                window.location.href = '/';
             } else {
                 console.error('Error submitting plant details');
             }

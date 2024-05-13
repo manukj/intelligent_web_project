@@ -5,7 +5,7 @@ exports.addAPlantPage = async (req, res, next) => {
 };
 
 exports.addNewPlantToDb = async (req, res, next) => {
-  const plantData = req.body.plantData;
+  const plantData = req.body;
   const newPlant = new AddPlant({
     plantName: plantData.plantName,
     date: plantData.date,
