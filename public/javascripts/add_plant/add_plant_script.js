@@ -1,7 +1,7 @@
 function init() {
     listenToLocationUpdate();
     registerFormSubmit();
-    //listenForOnlineSync();
+    listenForOnlineSync();
 }
 
 function listenToLocationUpdate() {
@@ -89,6 +89,7 @@ function addNewPlantDetails() {
     });
 }
 function submitPlantDetails(plantDetails) {
+
     fetch('/addNewPlant', {
         method: 'POST',
         headers: {
