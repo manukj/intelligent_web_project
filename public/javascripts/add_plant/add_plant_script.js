@@ -1,7 +1,7 @@
 function init() {
     listenToLocationUpdate();
     registerFormSubmit();
-    // listenForOnlineSync();
+    //listenForOnlineSync();
 }
 
 function listenToLocationUpdate() {
@@ -146,6 +146,3 @@ function changeOnlineStatus(isOnline) {
         onlineColorDiv.classList.remove("bg-green-500");
     }
 }
-
-
-
