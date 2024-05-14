@@ -19,7 +19,7 @@ self.addEventListener("install", (event) => {
           "/css/output.css",
           "/error/404_error",
           "/error/offline",
-          "",
+          "/images/login_image.svg",
         ]);
       } catch {
         log("error occured while caching...");
@@ -27,22 +27,6 @@ self.addEventListener("install", (event) => {
     })()
   );
 });
-
-//clear cache on reload
-// self.addEventListener("activate", (event) => {
-//   // Remove old caches
-//   event.waitUntil(
-//     (async () => {
-//       const keys = await caches.keys();
-//       return keys.map(async (cache) => {
-//         if (cache !== CACHE_NAME) {
-//           log(cache);
-//           return await caches.delete(cache);
-//         }
-//       });
-//     })()
-//   );
-// });
 
 self.addEventListener("fetch", function (event) {
   log(event.request.url);

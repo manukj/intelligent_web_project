@@ -6,7 +6,7 @@
     <link rel="manifest" href="/manifest.json" />
     <script src="/javascripts/dashboard_script.js"></script>
   </head>
-  <body>
+  <body onload="init()">
     <div class="flex flex-col h-screen">
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 mt-20">
         <% plantData.forEach(function(plant) { %> <%-
