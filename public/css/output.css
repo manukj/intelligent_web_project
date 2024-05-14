@@ -6010,6 +6010,10 @@ details.collapse summary::-webkit-details-marker{
   right: 2.5rem;
 }
 
+.right-20{
+  right: 5rem;
+}
+
 .top-0{
   top: 0px;
 }
@@ -6032,6 +6036,10 @@ details.collapse summary::-webkit-details-marker{
 
 .z-\[999\]{
   z-index: 999;
+}
+
+.z-10{
+  z-index: 10;
 }
 
 .m-0{
@@ -6140,6 +6148,10 @@ details.collapse summary::-webkit-details-marker{
 
 .mt-4{
   margin-top: 1rem;
+}
+
+.ml-1{
+  margin-left: 0.25rem;
 }
 
 .box-border{
@@ -6422,6 +6434,10 @@ details.collapse summary::-webkit-details-marker{
 
 .animate-bounce{
   animation: bounce 1s infinite;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }
 
 .touch-none{
@@ -7369,25 +7385,14 @@ p{
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
-@keyframes bounce{
-  0%, 100%{
-    transform: translateY(-25%);
-    animation-timing-function: cubic-bezier(0.8,0,1,1);
-  }
-
-  50%{
-    transform: none;
-    animation-timing-function: cubic-bezier(0,0,0.2,1);
-  }
-}
-
-.hover\:animate-bounce:hover{
-  animation: bounce 1s infinite;
-}
-
-.hover\:bg-indigo-500:hover{
+.hover\:bg-gray-200:hover{
   --tw-bg-opacity: 1;
-  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.focus\:outline-none:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .data-\[twe-carousel-fade\]\:z-0[data-twe-carousel-fade]{
