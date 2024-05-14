@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 let AddPlantSchema = new Schema({
     plantName: { type: String, required: true },
     date: { type: Date, required: true },
-    location: { type: String, required: true },
+    location: { type: String,},
     description: { type: String, required: true },
     height: { type: Number, required: true, min: 0 },
     spread: { type: Number, required: true, min: 0 },
