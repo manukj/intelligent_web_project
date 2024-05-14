@@ -7,6 +7,7 @@ function openAddPlantPage() {
 }
 
 function init() {
+  checkIfUserLoggedIn();
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js", {
       scope: "/",
