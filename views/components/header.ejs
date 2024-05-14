@@ -36,9 +36,10 @@
     </button>
 
     <dialog id="login_user_model" class="modal">
-      <div class="modal-box">
-        <h3 class="font-bold text-lg">👤 Pick a User Name to Use Plantify</h3>
-        <form onsubmit="event.preventDefault(); logInUser()">
+      <div class="modal-box place-content-center items-center flex flex-col w-full">
+        <h3 class="font-bold text-2xl w-full text-center" >Pick a User Name to Use Plantify</h3>
+        <img src="/images/login_image.svg" class="h-96"/>
+        <form onsubmit="event.preventDefault(); logInUser()" class="w-full">
           <label
         class="input input-bordered flex items-center gap-2 my-4 rounded-lg"
           >
@@ -55,7 +56,7 @@
         <input id="user_name" type="text" class="grow rounded-sm" placeholder="Username" required />
           </label>
 
-          <button class="btn btn-neutral w-full" type="submit">Log In</button>
+          <button class="btn btn-neutral w-full rounded-lg" type="submit">Log In</button>
         </form>
       </div>
       </div>
