@@ -20,6 +20,15 @@ self.addEventListener("install", (event) => {
           "/error/404_error",
           "/error/offline",
           "/images/login_image.svg",
+          "/javascripts/dashboard/dashboard_script.js",
+          "/javascripts/add_plant/add_plant_script.js",
+          "/javascripts/add_plant/add_plant_idb_utility.js",
+          "/javascripts/chat/chat_script.js",
+          "/javascripts/chat/chat_idb_utility.js",
+          "/javascripts/chat/chat_rendering_script.js",
+
+          "/javascripts/user/user_script.js",
+          "/javascripts/user/user_render_script.js",
         ]);
       } catch {
         log("error occured while caching...");

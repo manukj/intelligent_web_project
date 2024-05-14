@@ -12,4 +12,15 @@ function init() {
       scope: "/",
     });
   }
+  getPlantsFromIndexDb();
+}
+
+function getPlantsFromIndexDb() {
+  openSyncPlantIDB().then((db) => {
+    getAllSyncPlants(db).then((syncPlants) => {
+      syncPlants.forEach((data) => {
+        console.log("syncing data offline plant", data.value);
+      });
+    });
+  });
 }
