@@ -8,7 +8,10 @@ exports.detailsPage = async (req, res, next) => {
   var dbpediaResult = await getPlantDetails(plant_name);
   try {
     const data = await plantModel.findById(req.params.plant_id);
+    console.log("1");
     console.log(data);
+    console.log("2");
+    console.log(dbpediaResult)
     res.render("details/details", {
       data,
       user_name: user_name,
@@ -67,7 +70,6 @@ exports.searchPlant = async (req, res, next) => {
         let bindings = data.results.bindings;
         let result = JSON.stringify(bindings);
         console.log(data);
-        console.log("11111111111111");
         console.log(result);
       } else {
       }
