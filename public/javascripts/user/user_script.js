@@ -1,6 +1,8 @@
 const USERS_STORE_NAME = "users";
 const USER_IDB_NAME = "userIDB";
 
+var loggedInUser;
+
 function logout() {
   return new Promise((resolve, reject) => {
     initializeUserIDB().then((db) => {
@@ -12,7 +14,7 @@ function logout() {
       request.onsuccess = function () {
         console.log("User logged out successfully.");
         resolve();
-        showLoginUserModel();
+        onUserLoggedOut();
       };
 
       request.onerror = function (event) {
@@ -37,8 +39,9 @@ function logInUser() {
           console.log("Added " + "#" + addRequest.result + ": " + userName);
           const getRequest = userStore.get(addRequest.result);
           getRequest.addEventListener("success", () => {
+            loggedInUser = userName;
             resolve(getRequest.result);
-            hideLoginUserModel();
+            onUserLoggedIn();
           });
           getRequest.addEventListener("error", (event) => {
             reject(event.target.error);
@@ -103,9 +106,11 @@ function checkIfUserLoggedIn() {
         getUserName(db)
           .then((userName) => {
             if (userName) {
+              loggedInUser = userName.value;
+              onUserLoggedIn();
               resolve(userName);
             } else {
-              showLoginUserModel();
+              onUserLoggedOut();
             }
           })
           .catch((error) => {
@@ -118,28 +123,4 @@ function checkIfUserLoggedIn() {
   });
 }
 
-function showLoginUserModel() {
-  var loginUserModel = document.getElementById("login_user_model");
-  if (loginUserModel) {
-    loginUserModel.showModal();
-    hideLogoutButton();
-  }
-}
 
-function hideLoginUserModel() {
-  var loginUserModel = document.getElementById("login_user_model");
-  if (loginUserModel) {
-    loginUserModel.close();
-    showLogoutButton();
-  }
-}
-
-function hideLogoutButton() {
-  var logout_button = document.getElementById("logout_button");
-  logout_button.classList.add("hidden");
-}
-
-function showLogoutButton() {
-  var logout_button = document.getElementById("logout_button");
-  logout_button.classList.remove("hidden");
-}
