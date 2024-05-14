@@ -34,7 +34,7 @@ function createChatMessageElement(message) {
 }
 function createChatBubble(message) {
   const chatBubbleDiv = document.createElement("div");
-  chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row","shadow-2xl","shadow-neutral-800");
+  chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row","shadow");
   if (message.suggested_name && message.suggested_name.name) {
     chatBubbleDiv.classList.add("shadow-info-3");
   }

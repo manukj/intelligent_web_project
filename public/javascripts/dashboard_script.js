@@ -1,5 +1,5 @@
 function showDetailsPage(id) {
-  window.location.href = "details/" + id+"/Mark";
+  window.location.href = "details/" + id+"/"+loggedInUser;
 }
 
 function openAddPlantPage() {
