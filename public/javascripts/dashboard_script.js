@@ -6,14 +6,18 @@ function openAddPlantPage() {
   window.location.href = "/addPlant";
 }
 
-function showDropdown() {
-  const sortDropdown = document.getElementById("sortDropdown");
-  sortDropdown.classList.toggle("hidden");
+function showSortMenu() {
+  const sortMenu = document.getElementById("sortMenu");
+  sortMenu.classList.toggle("hidden");
 }
 
 function sortPlantsByDate() {
   plantData.sort(compareByDate);
   // Re-render the plant sightings (implementation depends on your framework)
+}
+
+function compareByDate(a, b){
+  a.Date
 }
 
 function sortPlantsByDistance() {
@@ -26,4 +30,3 @@ function compareByDistance(a, b) {
   // Replace this with your logic to compare distances (e.g., calculate and compare distances)
   return a.distance - b.distance;
 }
-

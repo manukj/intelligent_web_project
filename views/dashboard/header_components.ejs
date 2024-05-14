@@ -4,21 +4,24 @@
     <h1 class="text-xl font-bold text-gray-800">Plantify</h1>
 
     <div class="relative inline-block">
-        <button type="button" class="btn btn-neutral shadow-2xl btn-md right-20 text-white" onclick="showDropdown()"    >
+        <button type="button" class="btn btn-neutral shadow-2xl btn-md right-20 text-white" onclick="showSortMenu()">
             Sort by
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
             </svg>
         </button>
 
-        <div id="sortDropdown" class="absolute z-10 hidden left-0 w-full overflow-hidden rounded-md shadow-lg bg-white mt-1">
-            <ul class="text-gray-700 py-1">
+        <div id="sortMenu" class="absolute z-10 hidden left-0 w-full overflow-hidden rounded-md shadow-lg bg-white mt-1">
+            <ul class="text-gray-700 py-1 w-full">
                 <li class="block px-4 py-2 hover:bg-gray-200 rounded-md cursor-pointer" onclick="sortPlantsByDate()">
-                    Date/time
+                    <h4 class="font-medium">Date</h4>
                 </li>
+            </ul>
+            <ul>
                 <li class="block px-4 py-2 hover:bg-gray-200 rounded-md cursor-pointer" onclick="sortPlantsByDistance()">
-                    Distance
+                    <h4 class="font-medium">Distance</h4>
                 </li>
+
             </ul>
         </div>
     </div>
