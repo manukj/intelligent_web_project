@@ -1,7 +1,7 @@
 function init() {
     listenToLocationUpdate();
     registerFormSubmit();
-    listenForOnlineSync();
+    //listenForOnlineSync();
 }
 
 function listenToLocationUpdate() {
@@ -60,7 +60,8 @@ function addNewPlantDetails() {
     ).map((checkbox) => checkbox.value);
     const flowerColor = document.getElementById("flowerColor").value;
     const sunExposure = document.getElementById("sunExposure").value;
-    const photo = document.getElementById("photo").files[0];
+    const photo = document.getElementById("photoID").files[0];
+    const photoFile = photo ? URL.createObjectURL(photo) : null; // Convert the File object to a URL
 
     const plantDetails = {
         plantName,
@@ -72,7 +73,7 @@ function addNewPlantDetails() {
         characteristics,
         flowerColor,
         sunExposure,
-        photo,
+        photo:photoFile,
     };
 
     openSyncPlantIDB().then((db) => {
@@ -83,7 +84,7 @@ function addNewPlantDetails() {
                 submitPlantDetails(plantDetails)
             } else {
                 console.log("Plant added to Sync DB");
-                window.location.href = '/';
+                // window.location.href = '/';
             }
         });
     });
@@ -100,7 +101,7 @@ function submitPlantDetails(plantDetails) {
         .then(response => {
             if (response.ok) {
                 // Redirect to the dashboard page
-                window.location.href = '/';
+                // window.location.href = '/';
             } else {
                 console.error('Error submitting plant details');
             }
@@ -110,13 +111,8 @@ function submitPlantDetails(plantDetails) {
         });
 }
 function listenForOnlineSync() {
-    if (navigator.onLine) {
-        changeOnlineStatus(true);
-    } else {
-        changeOnlineStatus(false);
-    }
+
     window.addEventListener("online", function () {
-        changeOnlineStatus(true);
         console.log("You are now online.");
         openSyncPlantIDB().then((db) => {
             getAllSyncPlants(db).then((syncPlants) => {
@@ -129,21 +125,7 @@ function listenForOnlineSync() {
         });
     });
     window.addEventListener("offline", function () {
-        changeOnlineStatus(false);
+
         console.log("You are now offline.");
     });
-}
-
-function changeOnlineStatus(isOnline) {
-    const onlineColorDiv = document.getElementById("onlineColor");
-    const onlineText = document.getElementById("onlineText");
-    if (isOnline) {
-        onlineText.innerHTML = "Online";
-        onlineColorDiv.classList.add("bg-green-500");
-        onlineColorDiv.classList.remove("bg-red-500");
-    } else {
-        onlineText.innerHTML = "Offline";
-        onlineColorDiv.classList.add("bg-red-500");
-        onlineColorDiv.classList.remove("bg-green-500");
-    }
 }

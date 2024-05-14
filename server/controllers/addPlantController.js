@@ -6,6 +6,16 @@ exports.addAPlantPage = async (req, res, next) => {
 
 exports.addNewPlantToDb = async (req, res, next) => {
   const plantData = req.body;
+  let photoPath = null;
+
+  // Check if a file was uploaded and if it has a valid filename
+  console.log("testt------")
+  console.log(req.file);
+  // console.log(req.file.filename);
+  // console.log(req.file.path);
+  if (req.file && req.file.filename) {
+    photoPath = req.file.filename; // Store the image file name
+  }
   const newPlant = new AddPlant({
     plantName: plantData.plantName,
     date: plantData.date,
@@ -16,7 +26,7 @@ exports.addNewPlantToDb = async (req, res, next) => {
     characteristics: plantData.characteristics,
     flowerColor: plantData.flowerColor,
     sunExposure: plantData.sunExposure,
-    photo: plantData.photo,
+    photo: photoPath,
   });
 
   console.log("Adding new plant: ", newPlant);
