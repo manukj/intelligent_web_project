@@ -5,6 +5,6 @@ var router = express.Router();
 
 router.get("/", addAPlantPage);
 
-router.get("/addNewPlant",addNewPlantToDb);
+router.post("/addNewPlant",addNewPlantToDb);
 
 module.exports = router;
