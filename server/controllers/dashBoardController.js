@@ -1,3 +1,4 @@
+const dashboardPage = require("../models/add_plant_model");
 exports.dashboardPage = async (req, res, next) => {
   // TODO : make Api call here to get the plant data
 
@@ -24,4 +25,22 @@ exports.dashboardPage = async (req, res, next) => {
     title: "Dashboard",
     plantData: plantData,
   });
+};
+
+exports.getAllPlantDetails = async (req, res, next) => {
+
+  console.log("Getting all plants...");
+
+  return dashboardPage.find({})
+      .then((plants) => {
+        console.log(
+            "Plants retrieved successfully! :",
+            JSON.stringify(plants)
+        );
+        res.json(plants);
+      })
+      .catch((err) => {
+        console.error("Error retrieving plants: ", err);
+        res.json("Error retrieving plants: ");
+      });
 };
