@@ -45,3 +45,20 @@ exports.addNewPlantToDb = async (req, res, next) => {
         });
       });
 };
+exports.editPlantName = async (req, res, next) => {
+  const { id } = req.params;
+  const { newPlantName } = req.body;
+
+  try {
+    const updatedPlant = await AddPlant.findByIdAndUpdate(id, { plantName: newPlantName }, { new: true });
+
+    if (!updatedPlant) {
+      return res.status(404).json({ success: false, message: "Plant not found" });
+    }
+
+    res.status(200).json({ success: true, plant: updatedPlant });
+  } catch (error) {
+    console.error("Error editing plant name: ", error);
+    res.status(500).json({ success: false, message: "Error editing plant name", error: error.message });
+  }
+};
