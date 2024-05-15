@@ -1,29 +1,30 @@
-<div class="card w-full glass h-full">
+<div class="card w-full glass h-full ">
   <div class="lg:h-2/5 stats shadow">
     <figure>
       <img
-              src="<%= data.img %>"
+              src="/images/uploads/<%= data.photo %>"
+              class="p-4"
       />
     </figure>
   </div>
 
   <div class="card-body lg:h-3/5">
-    <div class="stat">
-      <h2 class="card-title text-2xl"><%= data.plantName%></h2>
-      <p><strong>Created by:</strong> user name </p>
-    </div>
-    <div class="stats stats-vertical lg:stats-horizontal shadow">
 
-      <div class="stat">
-        <p><strong>location:</strong> <%=data.location%> </p>
+      <h2 class="card-title text-2xl"><%= data.plantName%><p><strong>Created by:</strong> <%= data.user %></p></h2>
+
+
+    <div class="card flex flex-row place-content-between  shadow ">
+
+      <div class="border-r-2 w-full h-full place-content-center text-center">
+        <p class="text-center"><strong>location:</strong> <%=data.location%> </p>
       </div>
 
-      <div class="stat">
-        <p><strong>height:</strong> <%=data.height%> </p>
+      <div class="border-r-2 w-full h-full">
+        <p class="text-center"><strong>height:</strong> <%=data.height%> </p>
       </div>
 
-      <div class="stat">
-        <p><strong>spread:</strong> <%=data.spread%> </p>
+      <div class=" w-full h-full">
+        <p class="text-center"><strong>spread:</strong> <%=data.spread%> </p>
       </div>
     </div>
 
@@ -60,11 +61,12 @@
     </div>
 
     <div class="collapse collapse-arrow bg-base-200">
-      <input type="radio" name="my-accordion-2" />
+      <input type="checkbox" />
+
       <div class="collapse-title text-xl font-medium">
         description from dpmedia
       </div>
-      <div class="collapse-content">
+      <div class="collapse-content h-full overflow-scroll">
         <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
       </div>
     </div>
