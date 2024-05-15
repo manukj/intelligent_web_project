@@ -8,9 +8,9 @@
   <script src="/javascripts/chat/chat_rendering_script.js"></script>
   <script src="/javascripts/chat/chat_idb_utility.js"></script>
   <link rel="manifest" href="/manifest.json" />
+  <script src="/javascripts/user/user_render_script.js"></script>
   <script>
     plantId = '<%= plantId %>';
-    loggedInUserName = '<%= userName %>';
   </script>
 </head>
 
@@ -26,7 +26,7 @@
         <div id="onlineText" class="pl-2"></div>
       </div>
     </div>
-    <div class="flex flex-col h-full mx-5 overflow-scroll py-9" id="chat_messages">
+    <div class="flex flex-col lg:h-full h-[300px] mx-24 overflow-scroll py-9 " id="chat_messages">
     </div>
     
     <%- include('./chat_form_and_buttons.ejs') %>

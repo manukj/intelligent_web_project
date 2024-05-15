@@ -11,7 +11,8 @@ let AddPlantSchema = new Schema({
     characteristics: [{ type: String }],
     flowerColor: { type: String },
     sunExposure: { type: String, enum: ["full", "partial", "shade"] },
-    photo: { type: String } // Assuming store the photo as a file path
+    photo: { type: String },
+    user: { type: String, required: true },
 });
 
 // Create the mongoose model 'addPlant' based on the defined schema
