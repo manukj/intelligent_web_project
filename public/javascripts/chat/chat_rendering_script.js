@@ -2,7 +2,7 @@ function createChatMessageElement(message) {
   const chatMessageDiv = document.createElement("div");
   chatMessageDiv.classList.add(
     "chat",
-    message.user_name === loggedInUserName ? "chat-end" : "chat-start"
+    message.user_name === loggedInUser ? "chat-end" : "chat-start"
   );
 
   const chatImageDiv = document.createElement("div");
@@ -34,7 +34,7 @@ function createChatMessageElement(message) {
 }
 function createChatBubble(message) {
   const chatBubbleDiv = document.createElement("div");
-  chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row","shadow");
+  chatBubbleDiv.classList.add("chat-bubble", "flex", "flex-row", "shadow");
   if (message.suggested_name && message.suggested_name.name) {
     chatBubbleDiv.classList.add("shadow-info-3");
   }
@@ -42,7 +42,7 @@ function createChatBubble(message) {
   // Creating and styling the label for "Suggested Name:"
   const nameLabel = document.createElement("span");
   nameLabel.textContent = "Suggested Name: ";
-  nameLabel.classList.add("text-green-200", "px-2", "font-bold",); // Applying the grey color to the label
+  nameLabel.classList.add("text-green-200", "px-2", "font-bold"); // Applying the grey color to the label
 
   // Creating and appending the message text element
   const messageText = document.createElement("span");
@@ -55,9 +55,10 @@ function createChatBubble(message) {
   chatBubbleDiv.appendChild(messageText);
   return chatBubbleDiv;
 }
-function createChatFooter(chat, name = "Mark") {
+
+function createChatFooter(chat) {
   const chatFooterDiv = document.createElement("div");
-  if (chat.user_name === loggedInUserName) {
+  if (chat.user_name === loggedInUser) {
     chatFooterDiv.classList.add("chat-footer", "flex", "flex-col", "items-end");
   } else {
     chatFooterDiv.classList.add(
@@ -75,7 +76,7 @@ function createChatFooter(chat, name = "Mark") {
       approvedDiv.textContent = "✅︎ Approved by " + plantOwner;
       chatFooterDiv.appendChild(approvedDiv);
     } else {
-      if (chat.user_name === loggedInUserName) {
+      if (chat.user_name === loggedInUser) {
         const approveBtn = document.createElement("div");
         approveBtn.className = "btn btn-link btn-xs w-fit";
 
@@ -87,8 +88,10 @@ function createChatFooter(chat, name = "Mark") {
         chatFooterDiv.appendChild(approveBtn);
       } else {
         const pendingApprovalDiv = document.createElement("div");
-        pendingApprovalDiv.className = "text-xs opacity-50 text-error mt-1 font-bold";
-        pendingApprovalDiv.textContent = "⏰ Pending " + plantOwner + " Approval";
+        pendingApprovalDiv.className =
+          "text-xs opacity-50 text-error mt-1 font-bold";
+        pendingApprovalDiv.textContent =
+          "⏰ Pending " + plantOwner + " Approval";
         chatFooterDiv.appendChild(pendingApprovalDiv);
       }
     }

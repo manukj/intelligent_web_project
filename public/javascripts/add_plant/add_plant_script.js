@@ -1,7 +1,6 @@
 function init() {
   listenToLocationUpdate();
   registerFormSubmit();
-  //listenForOnlineSync();
 }
 
 function listenToLocationUpdate() {
@@ -100,8 +99,9 @@ function submitPlantDetails(plantDetails) {
   formData.append("flowerColor", plantDetails.flowerColor);
   formData.append("sunExposure", plantDetails.sunExposure);
   formData.append("photo", plantDetails.photo);
+  formData.append("user", loggedInUser);
 
-  fetch("addPlant/addNewPlant", {
+  fetch("addNewPlant", {
     method: "POST",
     body: formData,
   })

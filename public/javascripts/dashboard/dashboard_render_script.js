@@ -11,14 +11,15 @@ function renderPlantsList(plantList) {
 
 function createCard(plant) {
     var card = document.createElement("div");
+    plant.photo = plant.photo || "/images/placeholder.gif";
     card.className = "card shadow-lg bg-white cursor-pointer";
     card.onclick = function () {
         showDetailsPage(plant._id); // Call your function to show details page
     };
 
     var image = document.createElement("img");
-    image.src = plant.image;
-    image.alt = plant.name;
+    image.src = plant.photo;
+    image.alt = plant.photo;
     image.className = "w-full h-48 object-contain border-b-2 shadow-3";
 
     var details = document.createElement("div");

@@ -4,7 +4,7 @@ function showDetailsPage(id) {
 }
 
 function openAddPlantPage() {
-  window.location.href = "/addPlant";
+  window.location.href = "/addPlant/" + loggedInUser;
 }
 
 function init() {

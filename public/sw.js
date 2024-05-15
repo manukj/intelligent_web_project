@@ -17,7 +17,11 @@ self.addEventListener("install", (event) => {
         const resourcesToCache = {
           html: ["/", "/error/404_error", "/error/offline"],
           css: ["/css/output.css"],
-          images: ["/images/login_image.svg","/images/plant.gif"],
+          images: [
+            "/images/login_image.svg",
+            "/images/plant.gif",
+            "/images/placeholder.gif",
+          ],
           javascripts: [
             "/javascripts/dashboard/dashboard_script.js",
             "/javascripts/add_plant/add_plant_script.js",

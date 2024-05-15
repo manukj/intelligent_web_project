@@ -1,12 +1,10 @@
 const AddPlant = require("../models/add_plant_model"); // Import the AddPlant model
 
 exports.addAPlantPage = async (req, res, next) => {
-  res.render("add_plant/add_plant", { title: "Add A Plant" });
-};
-
-exports.addImage = async (req, res, next) => {
-  console.log("req.file", req.file);
-  res.json({ message: "Image uploaded successfully" });
+  res.render("add_plant/add_plant", {
+    title: "Add A Plant",
+    user: req.params.user_name,
+  });
 };
 
 exports.addNewPlantToDb = async (req, res, next) => {
@@ -27,6 +25,7 @@ exports.addNewPlantToDb = async (req, res, next) => {
     flowerColor: plantData.flowerColor,
     sunExposure: plantData.sunExposure,
     photo: photoPath,
+    user: plantData.user,
   });
 
   console.log("Adding new plant: ", newPlant);

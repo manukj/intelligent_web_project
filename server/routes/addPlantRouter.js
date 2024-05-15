@@ -7,7 +7,7 @@ const upload = require("./multer.config");
 
 var router = express.Router();
 
-router.get("/", addAPlantPage);
+router.get("/:user_name", addAPlantPage);
 
 router.post("/addNewPlant", upload.single("photo"), addNewPlantToDb);
 
