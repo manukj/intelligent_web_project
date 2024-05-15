@@ -47,7 +47,12 @@ function getPlantsFromIndexDb() {
 }
 
 
-function sortList(){
+function sortList(sortType){
+    if(sortType === 0){
+
+    }else{
+
+    }
     plantLists = [];
     renderPlantsList(plantLists)
 }
