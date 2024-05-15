@@ -8,6 +8,7 @@ function openAddPlantPage() {
 }
 
 function init() {
+    checkIfUserLoggedIn();
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("/sw.js", {
       scope: "/",
@@ -35,8 +36,6 @@ function getAllPlants() {
 }
 
 
-
-
 function getPlantsFromIndexDb() {
     openSyncPlantIDB().then((db) => {
         getAllSyncPlants(db).then((syncPlants) => {
@@ -45,4 +44,10 @@ function getPlantsFromIndexDb() {
             });
         });
     });
+}
+
+
+function sortList(){
+    plantLists = [];
+    renderPlantsList(plantLists)
 }

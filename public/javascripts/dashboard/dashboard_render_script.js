@@ -13,7 +13,7 @@ function createCard(plant) {
     var card = document.createElement("div");
     card.className = "card shadow-lg bg-white cursor-pointer";
     card.onclick = function () {
-        showDetailsPage(1); // Call your function to show details page
+        showDetailsPage(plant._id); // Call your function to show details page
     };
 
     var image = document.createElement("img");
