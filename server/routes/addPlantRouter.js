@@ -1,10 +1,14 @@
 var express = require("express");
-const { addAPlantPage,addNewPlantToDb } = require("../controllers/addPlantController");
+const {
+  addAPlantPage,
+  addNewPlantToDb,
+} = require("../controllers/addPlantController");
+const upload = require("./multer.config");
 
 var router = express.Router();
 
 router.get("/", addAPlantPage);
 
-router.post("/addNewPlant",addNewPlantToDb);
+router.post("/addNewPlant", upload.single("photo"), addNewPlantToDb);
 
 module.exports = router;
