@@ -1,4 +1,3 @@
-const plantModel = require("../models/plant");
 const { ObjectId } = require("mongodb");
 const { response } = require("express");
 const AddPlant = require("../models/add_plant_model");
@@ -12,7 +11,6 @@ async function getPlant(plant_id) {
 }
 
 exports.detailsPage = async (req, res, next) => {
-  const plantModel = require("../models/plant");
   const user_name = req.params.user_name;
   console.log(req.params.plant_id)
   const plant = await getPlant(req.params.plant_id);
@@ -32,16 +30,6 @@ exports.detailsPage = async (req, res, next) => {
   } catch (e) {
     console.error(e);
     res.status(404).send();
-  }
-};
-exports.savePlant = async (req, res, next) => {
-  const plantModel = require("../models/plant");
-  try {
-    const newPlant = await plantModel.save(req.body);
-    res.status(201).json(newPlant);
-  } catch (e) {
-    console.log(e);
-    res.status(500).send(e);
   }
 };
 
@@ -74,17 +62,4 @@ async function getPlantDetails(plantName) {
   return result;
 }
 
-exports.searchPlant = async (req, res, next) => {
-  fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.results.bindings.length > 0) {
-          let bindings = data.results.bindings;
-          let result = JSON.stringify(bindings);
-          console.log(data);
-          console.log(result);
-        } else {
-        }
-      })
-      .catch((error) => {});
-};
+
