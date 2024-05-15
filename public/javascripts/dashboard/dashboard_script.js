@@ -1,3 +1,4 @@
+plantLists ;
 function showDetailsPage(id) {
   window.location.href = "details/" + id + "/" + loggedInUser;
 }
@@ -25,6 +26,8 @@ function getAllPlants() {
       })
       .then((plants) => {
         console.log("Plants fetched successfully:", plants);
+          plantLists = plants;
+          renderPlantsList(plantLists);
       })
       .catch((error) => {
         console.error("Error fetching plants:", error.message);
