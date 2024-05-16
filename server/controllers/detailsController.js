@@ -1,6 +1,7 @@
 const { ObjectId } = require("mongodb");
 const { response } = require("express");
 const AddPlant = require("../models/add_plant_model");
+// get plant by plant_id
 async function getPlant(plant_id) {
   try{
     const plant = AddPlant.findOne({_id:plant_id});
@@ -10,6 +11,7 @@ async function getPlant(plant_id) {
   }
 }
 
+// get google map link by plant
 async function getMap(plant) {
   try{
     const parts = plant.location.split(',');
@@ -21,19 +23,17 @@ async function getMap(plant) {
     return null;
   }
 }
-
+// detail page
 exports.detailsPage = async (req, res, next) => {
   const user_name = req.params.user_name;
   const plant = await getPlant(req.params.plant_id);
-  console.log(plant);
-  const resource = `http://dbpedia.org/resource/`+plant.plantName;
+  const resource = `http://dbpedia.org/resource/`+plant.plantName.replace(/\s+/g, '');
+  console.log(resource);
   var dbpediaResult = await getPlantDetails(plant.plantName);
   const link = await getMap(plant);
   try {
     const data = await getPlant(req.params.plant_id);
-    console.log("1");
     console.log(data);
-    console.log("2");
     console.log(dbpediaResult)
     res.render("details/details", {
       data,
@@ -52,7 +52,6 @@ async function getPlantDetails(plantName) {
   const resource = `http://dbpedia.org/resource/${encodeURIComponent(
       plantName
   )}`;
-  console.log(resource);
   const endpointUrl = "https://dbpedia.org/sparql";
 
   const sqarqlQuery = `
