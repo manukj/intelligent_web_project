@@ -6474,6 +6474,14 @@ details.collapse summary::-webkit-details-marker{
   width: 100vw;
 }
 
+.w-40{
+  width: 10rem;
+}
+
+.w-80{
+  width: 20rem;
+}
+
 .max-w-\[200px\]{
   max-width: 200px;
 }
@@ -7342,6 +7350,11 @@ details.collapse summary::-webkit-details-marker{
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .underline{
   text-decoration-line: underline;
 }
@@ -7784,6 +7797,14 @@ p{
 
   .lg\:w-1\/2{
     width: 50%;
+  }
+
+  .lg\:w-40{
+    width: 10rem;
+  }
+
+  .lg\:w-auto{
+    width: auto;
   }
 
   .lg\:flex-row{

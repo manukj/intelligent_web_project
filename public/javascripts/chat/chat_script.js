@@ -175,19 +175,46 @@ function getChatHistory(plant_id) {
 }
 
 function renderChatMessages(chatMessages) {
-  const chatContainer = document.getElementById("chat_messages");
-  chatMessages.forEach((message) => {
-    let chatTime = new Date(message.chat_time);
-    let formattedChatTime = chatTime.toLocaleString("en-US", {
-      month: "short",
-      day: "numeric",
-      year: "numeric",
-      hour: "numeric",
-      minute: "numeric",
-      hour12: true,
-    });
-    message.chat_time = formattedChatTime;
-    const chatMessageDiv = createChatMessageElement(message);
-    chatContainer.appendChild(chatMessageDiv);
-  });
+  try {
+    const chatContainer = document.getElementById("chat_messages");
+    // Clear chat container
+    chatContainer.innerHTML = "";
+    if (chatMessages.length === 0) {
+      const noMessagesDiv = document.createElement("div");
+      noMessagesDiv.classList.add(
+        "flex",
+        "flex-col",
+        "w-full",
+        "h-full",
+        "items-center",
+        "place-content-center"
+      );
+      const noMessagesImg = document.createElement("img");
+      noMessagesImg.src = "/images/chat.svg";
+      noMessagesImg.classList.add("w-80");
+      const noMessagesText = document.createElement("div");
+      noMessagesText.classList.add("text-lg", "text-gray-500");
+      noMessagesText.textContent = "No messages yet";
+      noMessagesDiv.appendChild(noMessagesImg);
+      noMessagesDiv.appendChild(noMessagesText);
+      chatContainer.appendChild(noMessagesDiv);
+    } else {
+      chatMessages.forEach((message) => {
+        let chatTime = new Date(message.chat_time);
+        let formattedChatTime = chatTime.toLocaleString("en-US", {
+          month: "short",
+          day: "numeric",
+          year: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        });
+        message.chat_time = formattedChatTime;
+        const chatMessageDiv = createChatMessageElement(message);
+        chatContainer.appendChild(chatMessageDiv);
+      });
+    }
+  } catch (error) {
+    console.error("Error rendering chat messages:", error.message);
+  }
 }
