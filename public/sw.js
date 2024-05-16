@@ -22,6 +22,7 @@ self.addEventListener("install", (event) => {
             "/images/plant.gif",
             "/images/placeholder.gif",
             "/images/no_plant.svg",
+            "/images/add_plant_image.svg",
           ],
           javascripts: [
             "/javascripts/dashboard/dashboard_script.js",

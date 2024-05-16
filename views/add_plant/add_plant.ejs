@@ -15,148 +15,157 @@
       loggedInUser = "<%= user %>";
     </script>
   </head>
-  <body onload="init()">
-    <div class="container mx-auto p-4 flex justify-center items-center">
-      <div class="bg-white rounded-lg shadow-md p-6 w-full md:w-3/4 lg:w-1/2">
-        <h1 class="text-3xl font-bold mb-4 text-center">Add Plant Sighting</h1>
-        <form method="POST" enctype="multipart/form-data" id="plantForm">
-          <!-- Plant Name -->
-          <div class="mb-4">
-            <div class="w-full">
-              <label for="plantName" class="block">Plant Name:</label>
-              <input
-                type="text"
-                id="plantName"
-                name="plantName"
-                required
-                class="input input-bordered w-full"
-              />
-            </div>
-          </div>
-          <!-- Date and Time Seen and Location -->
-          <div class="mb-4 flex flex-col justify-between sm:flex-row">
-            <div class="w-full mr-2">
-              <label for="date" class="block">Date and Time Seen:</label>
-              <input
-                type="datetime-local"
-                id="date"
-                name="date"
-                required
-                class="input input-bordered w-full max-w-xs"
-              />
-            </div>
-            <% include location.ejs %>
-          </div>
-          <!-- Description -->
-          <div class="mb-4">
-            <label for="description" class="block">Description:</label>
-            <textarea
-              id="description"
-              name="description"
-              rows="4"
-              required
-              class="input input-bordered w-full h-30"
-            ></textarea>
-          </div>
+  <body onload="init()" class="h-screen flex items-center place-content-center relative">
+    <img src="/images/add_plant_image.svg" class="absolute top-8 left-8 w-[400px]  hidden md:block z-2"></img>
 
-          <!-- Height and Spread -->
-          <div class="mb-4 flex flex-col justify-between sm:flex-row">
-            <div class="w-full mr-2">
-              <label for="height" class="block">Height (in cm):</label>
-              <input
-                type="number"
-                id="height"
-                name="height"
-                required
-                class="input input-bordered w-full max-w-xs"
-                min="0"
-              />
-            </div>
-            <div class="w-full sm:ml-2">
-              <label for="spread" class="block">Spread (in cm):</label>
-              <input
-                type="number"
-                id="spread"
-                name="spread"
-                required
-                class="input input-bordered w-full max-w-xs"
-                min="0"
-              />
-            </div>
-          </div>
-
-          <!-- Plant Characteristics  -->
-          <div class="mb-4 flex flex-wrap items-center">
-            <div class="w-full md:w-1/2 md:pr-2 mb-4">
-              <label class="block">Plant Characteristics:</label>
-              <div class="flex space-x-4">
-                <label for="flowers" class="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="flowers"
-                    name="characteristics"
-                    value=" flowers"
-                    class="checkbox"
-                    onclick="toggleFlowerColor()"
-                  />
-                  Flowers
-                </label>
-
-                <label for="leaves" class="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="leaves"
-                    name="characteristics"
-                    value=" leaves"
-                    class="checkbox"
-                  />
-                  Leaves
-                </label>
-                <label for="fruits" class="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="fruits"
-                    name="characteristics"
-                    value=" fruits"
-                    class="checkbox"
-                  />
-                  Fruits/Seeds
-                </label>
-              </div>
-              <% include flowercolor.ejs %>
-            </div>
-
-            <!-- Sun Exposure -->
-            <div class="w-full">
-              <label for="sunExposure" class="block">Sun Exposure:</label>
-              <select
-                id="sunExposure"
-                name="sunExposure"
-                class="input input-bordered w-full max-w-xs"
-              >
-                <option value="full">Full Sun</option>
-                <option value="partial">Partial Sun</option>
-                <option value="shade">Shade</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Photo Upload -->
-          <div class="mb-4">
-            <label for="photo" class="block">Photo Upload:</label>
+    <div
+      class="absolute flex flex-col  place-content-center items-center bg-white shadow-md p-6 w-full md:w-2/3 lg:w-1/2"
+    >
+      <h1 class="text-3xl font-bold mb-4 text-center">Add Plant Sighting</h1>
+      <form method="POST" enctype="multipart/form-data" id="plantForm">
+        <!-- Plant Name -->
+        <div class="mb-4">
+          <div class="w-full">
+            <label for="plantName" class="block font-bold">Plant Name:</label>
             <input
-              type="file"
-              id="photoID"
-              name="photo"
-              class="file-input file-input-bordered w-full max-w-xs"
+              type="text"
+              id="plantName"
+              name="plantName"
+              required
+              class="input input-bordered w-full rounded-sm"
             />
           </div>
-          <!-- Submit button -->
-          <div class="mb-4 flex justify-center w-full">
-            <button type="submit" class="btn btn-neutral w-full">Submit</button>
+        </div>
+        <!-- Date and Time Seen and Location -->
+        <div class="mb-4 flex flex-col justify-between sm:flex-row">
+          <div class="w-full mr-2">
+            <label for="date" class="block font-bold"
+              >Date and Time Seen:</label
+            >
+            <input
+              type="datetime-local"
+              id="date"
+              name="date"
+              required
+              class="input input-bordered w-full rounded-sm max-w-xs"
+            />
           </div>
-        </form>
-      </div>
+          <% include location.ejs %>
+        </div>
+        <!-- Description -->
+        <div class="mb-4">
+          <label for="description" class="block font-bold">Description:</label>
+          <textarea
+            id="description"
+            name="description"
+            rows="4"
+            required
+            class="input input-bordered w-full rounded-sm h-30"
+          ></textarea>
+        </div>
+
+        <!-- Height and Spread -->
+        <div class="mb-4 flex flex-col justify-between sm:flex-row">
+          <div class="w-full mr-2">
+            <label for="height" class="block font-bold">Height (in cm):</label>
+            <input
+              type="number"
+              id="height"
+              name="height"
+              required
+              class="input input-bordered w-full rounded-sm max-w-xs"
+              min="0"
+            />
+          </div>
+          <div class="w-full sm:ml-2">
+            <label for="spread" class="block font-bold">Spread (in cm):</label>
+            <input
+              type="number"
+              id="spread"
+              name="spread"
+              required
+              class="input input-bordered w-full rounded-sm max-w-xs"
+              min="0"
+            />
+          </div>
+        </div>
+
+        <!-- Plant Characteristics  -->
+        <div class="mb-4 flex flex-wrap items-center">
+          <div class="w-full md:w-1/2 md:pr-2 mb-4">
+            <label class="block font-bold">Plant Characteristics:</label>
+            <div class="flex space-x-4 mt-1">
+              <label for="flowers" class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="flowers"
+                  name="characteristics"
+                  value=" flowers"
+                  class="checkbox mr-3"
+                  onclick="toggleFlowerColor()"
+                />
+                Flowers
+              </label>
+
+              <label for="leaves" class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="leaves"
+                  name="characteristics"
+                  value=" leaves"
+                  class="checkbox mr-3"
+                />
+                Leaves
+              </label>
+              <label for="fruits" class="flex items-center">
+                <input
+                  type="checkbox"
+                  id="fruits"
+                  name="characteristics"
+                  value=" fruits"
+                  class="checkbox mr-3"
+                />
+                Fruits/Seeds
+              </label>
+            </div>
+            <% include flowercolor.ejs %>
+          </div>
+
+          <!-- Sun Exposure -->
+          <div class="w-full">
+            <label for="sunExposure" class="block font-bold"
+              >Sun Exposure:</label
+            >
+            <select
+              id="sunExposure"
+              name="sunExposure"
+              class="input input-bordered w-full rounded-sm max-w-xs"
+            >
+              <option value="full">Full Sun</option>
+              <option value="partial">Partial Sun</option>
+              <option value="shade">Shade</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Photo Upload -->
+        <div class="mb-4">
+          <label for="photo" class="block font-bold">Photo Upload:</label>
+          <input
+            type="file"
+            id="photoID"
+            name="photo"
+            class="file-input file-input-bordered w-full max-w-xs rounded-sm"
+          />
+        </div>
+        <!-- Submit button -->
+        <div class="mb-4 flex justify-center w-full">
+          <button type="submit" class="btn btn-neutral w-full rounded-sm">
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
+    
   </body>
 </html>
