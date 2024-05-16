@@ -178,9 +178,13 @@ function renderChatMessages(chatMessages) {
   try {
     const chatContainer = document.getElementById("chat_messages");
     // Clear chat container
-    chatContainer.innerHTML = "";
+    const noMessagesDiv = document.getElementById("no_messages_div");
+    if (noMessagesDiv) {
+      chatContainer.removeChild(noMessagesDiv);
+    }
     if (chatMessages.length === 0) {
       const noMessagesDiv = document.createElement("div");
+      noMessagesDiv.id = "no_messages_div";
       noMessagesDiv.classList.add(
         "flex",
         "flex-col",

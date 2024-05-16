@@ -26,7 +26,7 @@ function toggleLogoutButton(shouldShow) {
 function toggleWelcomeText(shouldShow) {
   const userWelcomeText = document.getElementById("welcome_user_text");
   if (userWelcomeText) {
-    userWelcomeText.innerHTML = "Welcome " + loggedInUser;
+    userWelcomeText.innerHTML = loggedInUser;
     userWelcomeText.classList.toggle("hidden", !shouldShow);
   }
 }

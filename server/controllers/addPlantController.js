@@ -19,8 +19,9 @@ exports.addNewPlantToDb = async (req, res, next) => {
   const plantData = req.body;
   let photoPath = null;
 
-  if (req.file && req.file.fileName) {
-    photoPath = req.file.fileName;
+
+  if (req.file && req.file.filename) {
+    photoPath = req.file.filename;
   }
   const newPlant = new AddPlant({
     plantName: plantData.plantName,

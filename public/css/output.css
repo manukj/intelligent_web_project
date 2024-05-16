@@ -6264,6 +6264,10 @@ details.collapse summary::-webkit-details-marker{
   margin-top: 0.25rem;
 }
 
+.mt-10{
+  margin-top: 2.5rem;
+}
+
 .mt-12{
   margin-top: 3rem;
 }
@@ -6433,6 +6437,10 @@ details.collapse summary::-webkit-details-marker{
   width: 1rem;
 }
 
+.w-40{
+  width: 10rem;
+}
+
 .w-5{
   width: 1.25rem;
 }
@@ -6449,8 +6457,16 @@ details.collapse summary::-webkit-details-marker{
   width: 2rem;
 }
 
+.w-80{
+  width: 20rem;
+}
+
 .w-96{
   width: 24rem;
+}
+
+.w-\[400px\]{
+  width: 400px;
 }
 
 .w-\[80px\]{
@@ -6472,14 +6488,6 @@ details.collapse summary::-webkit-details-marker{
 
 .w-screen{
   width: 100vw;
-}
-
-.w-40{
-  width: 10rem;
-}
-
-.w-80{
-  width: 20rem;
 }
 
 .max-w-\[200px\]{
@@ -6615,8 +6623,16 @@ details.collapse summary::-webkit-details-marker{
   grid-template-columns: repeat(1, minmax(0, 1fr));
 }
 
+.grid-cols-2{
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .flex-row{
@@ -7265,6 +7281,11 @@ details.collapse summary::-webkit-details-marker{
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .text-gray-600{
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
@@ -7348,11 +7369,6 @@ details.collapse summary::-webkit-details-marker{
 .text-white{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
-}
-
-.text-gray-500{
-  --tw-text-opacity: 1;
-  color: rgb(107 114 128 / var(--tw-text-opacity));
 }
 
 .underline{
@@ -7764,12 +7780,20 @@ p{
 }
 
 @media (min-width: 768px){
+  .md\:block{
+    display: block;
+  }
+
   .md\:w-1\/2{
     width: 50%;
   }
 
   .md\:w-3\/4{
     width: 75%;
+  }
+
+  .md\:grid-cols-2{
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .md\:pr-2{
@@ -7799,15 +7823,17 @@ p{
     width: 50%;
   }
 
-  .lg\:w-40{
-    width: 10rem;
-  }
-
-  .lg\:w-auto{
-    width: auto;
+  .lg\:grid-cols-3{
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .lg\:flex-row{
     flex-direction: row;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:grid-cols-4{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }

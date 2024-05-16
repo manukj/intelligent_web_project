@@ -1,12 +1,12 @@
 <body>
   <header
-    class="bg-white shadow-md px-6   justify-between w-full fixed flex flex-row place-content-between items-center"
+    class="bg-white shadow-md px-6 justify-between w-full fixed flex flex-row place-content-between items-center"
   >
     <div class="flex flex-row place-content-center items-center">
       <img src="/images/plant.gif" class="h-[80px] w-[80px]" />
-      <h1 class="text-4xl font-bold text-neutral">Plantify</h1>
+      <h1 class="text-4xl font-bold text-neutral hidden md:block">Plantify</h1>
     </div>
-    <div class="text-xl" id="welcome_user_text"></div>
+    <div class="flex flex-row items-center">Welcome<div class="text-xl font-bold px-3" id="welcome_user_text"></div></div>
     <button
       class="btn btn-neutral btn-outline rounded-lg text-4xl"
       onclick="logout()"
@@ -31,7 +31,7 @@
           d="M19 17c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l4-4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-4 4c-.2.2-.4.3-.7.3z"
         ></path>
       </svg>
-      <div class="text-lg">Logout</div>
+      <div class="text-lg hidden md:block">Logout</div>
     </button>
 
     <dialog id="login_user_model" class="modal">
