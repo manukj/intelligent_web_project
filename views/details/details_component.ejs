@@ -4,21 +4,27 @@
       <img
               src="/images/uploads/<%= data.photo %>"
               class="p-4"
+              onerror="this.onerror=null;this.src='/images/placeholder.gif';"
       />
     </figure>
   </div>
 
   <div class="card-body lg:h-3/5">
 
-      <h2 class="card-title text-2xl"><%= data.plantName%><p><strong>Created by:</strong> <%= data.user %></p></h2>
+      <h2 class="card-title text-2xl"><%= data.plantName%></h2>
+      <div class="card overscroll-none">
+        <div class="card-title overscroll-none">
+          <div>Created by:</div>
+          <%= data.user %>
+        </div>
+      </div>
 
+    <div class="card flex flex-row place-content-between  shadow p-3 ">
 
-    <div class="card flex flex-row place-content-between  shadow ">
-
-      <div class="border-r-2 w-full h-full flex flex-row flex-nowrap">
-          <div><strong>location:</strong></div>
-          <div class="flex flex-row flex-nowrap">
-            <a class="link" href=<%=link %>>map</a>
+      <div class="border-r-2 w-full h-full flex flex-row items-center place-content-center">
+          <div><strong>location :</strong></div>
+          <div class="flex flex-row flex-nowrap px-2">
+            <a class="link px-2" href=<%=link %>>map</a>
             <img
                     class="h-6 w-6 object-contain"
                     src="<% if (data.location === '') { %>
