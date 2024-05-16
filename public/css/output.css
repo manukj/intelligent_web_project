@@ -6163,6 +6163,10 @@ details.collapse summary::-webkit-details-marker{
   z-index: 1080;
 }
 
+.z-\[1\]{
+  z-index: 1;
+}
+
 .z-\[999\]{
   z-index: 999;
 }
@@ -6364,8 +6368,16 @@ details.collapse summary::-webkit-details-marker{
   height: 15rem;
 }
 
+.h-8{
+  height: 2rem;
+}
+
 .h-96{
   height: 24rem;
+}
+
+.h-\[300px\]{
+  height: 300px;
 }
 
 .h-\[80px\]{
@@ -6382,10 +6394,6 @@ details.collapse summary::-webkit-details-marker{
 
 .h-screen{
   height: 100vh;
-}
-
-.h-8{
-  height: 2rem;
 }
 
 .min-h-max{
@@ -6427,6 +6435,10 @@ details.collapse summary::-webkit-details-marker{
 
 .w-5{
   width: 1.25rem;
+}
+
+.w-52{
+  width: 13rem;
 }
 
 .w-6{
@@ -6611,6 +6623,10 @@ details.collapse summary::-webkit-details-marker{
   flex-wrap: wrap;
 }
 
+.flex-nowrap{
+  flex-wrap: nowrap;
+}
+
 .place-content-center{
   place-content: center;
 }
@@ -6696,6 +6712,10 @@ details.collapse summary::-webkit-details-marker{
   overflow-y: auto;
 }
 
+.overscroll-none{
+  overscroll-behavior: none;
+}
+
 .whitespace-normal{
   white-space: normal;
 }
@@ -6721,6 +6741,10 @@ details.collapse summary::-webkit-details-marker{
   border-radius: 50%;
 }
 
+.rounded-box{
+  border-radius: var(--rounded-box, 1rem);
+}
+
 .rounded-full{
   border-radius: 9999px;
 }
@@ -6729,12 +6753,12 @@ details.collapse summary::-webkit-details-marker{
   border-radius: 0.5rem;
 }
 
-.rounded-sm{
-  border-radius: 0.125rem;
-}
-
 .rounded-md{
   border-radius: 0.375rem;
+}
+
+.rounded-sm{
+  border-radius: 0.125rem;
 }
 
 .rounded-e-\[0\.25rem\]{
@@ -6767,6 +6791,10 @@ details.collapse summary::-webkit-details-marker{
 
 .border-e-0{
   border-inline-end-width: 0px;
+}
+
+.border-r-2{
+  border-right-width: 2px;
 }
 
 .border-s-0{
@@ -6933,6 +6961,11 @@ details.collapse summary::-webkit-details-marker{
   background-color: rgb(239 68 68 / var(--tw-bg-opacity));
 }
 
+.bg-red-700{
+  --tw-bg-opacity: 1;
+  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
+}
+
 .bg-transparent{
   background-color: transparent;
 }
@@ -6940,11 +6973,6 @@ details.collapse summary::-webkit-details-marker{
 .bg-white{
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
-.bg-red-700{
-  --tw-bg-opacity: 1;
-  background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
 .bg-clip-padding{
@@ -7041,6 +7069,11 @@ details.collapse summary::-webkit-details-marker{
 .py-2{
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
 }
 
 .py-4{
@@ -7539,29 +7572,6 @@ p{
   }
 }
 
-@media (min-width: 1024px){
-  .lg\:stats-horizontal{
-    grid-auto-flow: column;
-  }
-
-  .lg\:stats-horizontal > :not([hidden]) ~ :not([hidden]){
-    --tw-divide-x-reverse: 0;
-    border-right-width: calc(1px * var(--tw-divide-x-reverse));
-    border-left-width: calc(1px * calc(1 - var(--tw-divide-x-reverse)));
-    --tw-divide-y-reverse: 0;
-    border-top-width: calc(0px * calc(1 - var(--tw-divide-y-reverse)));
-    border-bottom-width: calc(0px * var(--tw-divide-y-reverse));
-  }
-
-  .lg\:stats-horizontal{
-    overflow-x: auto;
-  }
-
-  :is([dir="rtl"] .lg\:stats-horizontal){
-    --tw-divide-x-reverse: 1;
-  }
-}
-
 .empty\:hidden:empty{
   display: none;
 }
@@ -7766,6 +7776,10 @@ p{
 
   .lg\:h-3\/5{
     height: 60%;
+  }
+
+  .lg\:h-full{
+    height: 100%;
   }
 
   .lg\:w-1\/2{
