@@ -9,11 +9,11 @@
       plantOwner = "<%= data.user %>";
     </script>
   </head>
-  <div class="flex flex-col h-screen w-full lg:flex-row">
-    <div class="lg:w-1/2 m-5 h-full">
+  <div class="flex flex-col h-screen w-full lg:flex-row ">
+    <div class="lg:w-1/2 h-full mx-5">
       <%- include('./details_component.ejs',{data:data}) %>
     </div>
-    <div class="lg:w-1/2 m-5">
+    <div class="lg:w-1/2 h-full mx-5 ">
       <%- include('./chat.ejs', { data: data , userName: user_name }) %>
     </div>
   </div>

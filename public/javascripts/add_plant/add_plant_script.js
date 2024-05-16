@@ -10,10 +10,11 @@ function listenToLocationUpdate() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           function (position) {
-            var latitude = position.coords.latitude;
-            var longitude = position.coords.longitude;
+            var latitude = position.coords.latitude.toFixed(4);
+            var longitude = position.coords.longitude.toFixed(4);
+  
             document.getElementById("location").value =
-              latitude + ", " + longitude;
+              latitude + "°, " + longitude + "°";
           },
           function (error) {
             console.log("Error getting location:", error);
