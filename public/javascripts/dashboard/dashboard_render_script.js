@@ -29,7 +29,7 @@ function createCard(plant) {
 
     var title = document.createElement("h3");
     title.className = "text-lg font-medium text-gray-800";
-    title.textContent = plant.name;
+    title.textContent = plant.plantName;
 
     var location = document.createElement("p");
     location.className = "text-gray-600";
@@ -41,7 +41,7 @@ function createCard(plant) {
 
     // Appending elements to card
     details.appendChild(title);
-    details.appendChild(location);
+    //details.appendChild(location);
     details.appendChild(dateTime);
     card.appendChild(image);
     card.appendChild(details);

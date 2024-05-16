@@ -76,14 +76,15 @@ function createChatFooter(chat) {
       approvedDiv.textContent = "✅︎ Approved by " + plantOwner;
       chatFooterDiv.appendChild(approvedDiv);
     } else {
-      if (chat.user_name === loggedInUser) {
+      if (plantOwner === loggedInUser) {
         const approveBtn = document.createElement("div");
         approveBtn.className = "btn btn-link btn-xs w-fit";
-
+        
         approveBtn.textContent = "✓ Approve Suggested Name";
-        approveBtn.onclick = function () {
-          chat.suggested_name.isApprovedByOwner = true;
+        approveBtn.onclick = async function () {
+          await editPlantName(chat.suggested_name.name, chat.plant_id);
           console.log("Approved by", loggedInUser);
+          window.location.reload();
         };
         chatFooterDiv.appendChild(approveBtn);
       } else {
@@ -103,4 +104,20 @@ function createChatFooter(chat) {
   chatFooterDiv.appendChild(timeElement);
 
   return chatFooterDiv;
+}
+
+async function editPlantName(newName, plantId) {
+  const requestOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      newPlantName: newName,
+    }),
+  };
+  await fetch("/addPlant/editPlantName/" + plantId, requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.error(error));
 }

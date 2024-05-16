@@ -1,4 +1,5 @@
-const AddPlant = require("../models/add_plant_model"); // Import the AddPlant model
+const AddPlant = require("../models/add_plant_model");
+const ChatMessage = require("../models/chat_model");
 
 exports.addAPlantPage = async (req, res, next) => {
   res.render("add_plant/add_plant", {
@@ -43,4 +44,41 @@ exports.addNewPlantToDb = async (req, res, next) => {
         error: err.message,
       });
     });
+};
+
+exports.editPlantName = async (req, res, next) => {
+  const plantId = req.params.plant_id;
+  const { newPlantName } = req.body;
+
+  try {
+    console.log("Editing plant name: ", plantId, newPlantName);
+
+    const updatedPlant = await AddPlant.findByIdAndUpdate(
+      plantId,
+      { plantName: newPlantName },
+      { new: true }
+    );
+    console.log("Plant updated with new name: ", updatedPlant);
+
+    const result = await ChatMessage.updateMany(
+      { plant_id: plantId },
+      { $set: { "suggested_name.isApprovedByOwner": true } }
+    );
+    console.log("Updated chat messages: ", result);
+
+    if (!updatedPlant && !result) {
+      return res
+        .status(404)
+        .json({ success: false, message: "Plant not found" });
+    }
+
+    res.status(200).json({ success: true, plant: updatedPlant });
+  } catch (error) {
+    console.error("Error editing plant name: ", error);
+    res.status(500).json({
+      success: false,
+      message: "Error editing plant name",
+      error: error.message,
+    });
+  }
 };

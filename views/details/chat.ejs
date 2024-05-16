@@ -10,7 +10,7 @@
   <link rel="manifest" href="/manifest.json" />
   <script src="/javascripts/user/user_render_script.js"></script>
   <script>
-    plantId = '<%= plantId %>';
+    plantId = '<%= data._id %>';
   </script>
 </head>
 
@@ -20,13 +20,13 @@
 
   <div class="flex flex-col h-full card w-full glass">
     <div class="p-4 border-b-2 flex flex-row justify-between">
-      Chat on : Angel trumpet
+      Chat on : <%= data.plantName  %>
       <div class="flex flex-row items-center">
         <div class="rounded-full  w-4 h-4 shadow-xl " id="onlineColor"></div>
         <div id="onlineText" class="pl-2"></div>
       </div>
     </div>
-    <div class="flex flex-col lg:h-full h-[300px] mx-24 py-9 " id="chat_messages">
+    <div class="flex flex-col lg:h-full h-[300px] mx-2 overflow-scroll py-9 " id="chat_messages">
     </div>
     
     <%- include('./chat_form_and_buttons.ejs') %>

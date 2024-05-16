@@ -45,7 +45,17 @@ function getPlantsFromIndexDb() {
   });
 }
 
-function sortList() {
-  plantLists = [];
-  renderPlantsList(plantLists);
+
+function sortList(sortType) {
+    if (sortType === 0) { // Sort by date (ascending)
+        plantLists.sort((plantA, plantB) => {
+            return new Date(plantA.date) - new Date(plantB.date);
+        });
+    } else if (sortType === 1) { // Sort by location (approximate)
+        plantLists.sort((plantA, plantB) => {
+            return plantA.location.localeCompare(plantB.location); // String comparison
+        });
+    }
+
+    renderPlantsList(plantLists);
 }
