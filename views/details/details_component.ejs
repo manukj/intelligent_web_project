@@ -67,7 +67,9 @@
         description from dpmedia
       </div>
       <div class="collapse-content h-full overflow-scroll">
-        <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
+        <% if (dbpediaResult.results.bindings[0] && dbpediaResult.results.bindings[0].description && dbpediaResult.results.bindings[0].description.value) { %>
+          <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
+        <% } %>
       </div>
     </div>
 
