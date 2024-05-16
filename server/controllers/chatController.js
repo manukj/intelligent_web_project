@@ -12,7 +12,7 @@ exports.chatPage = async (req, res, next) => {
 exports.getChatMessagesByPlantId = async (req, res, next) => {
   const plant_id = req.params.plant_id;
   console.log("Getting chat messages for plant id: ", plant_id);
-  return ChatMessage.find({})
+  return ChatMessage.find({ plant_id: plant_id })
     .then((chats) => {
       console.log(
         "Chat messages retrieved successfully! :",
@@ -38,6 +38,7 @@ exports.addChatMessage = async (req, res, next) => {
     user_name: chatMessage.user_name,
     chat_time: chatMessage.chat_time || timestamp,
     plant_id: chatMessage.plant_id,
+    suggested_name: chatMessage.suggested_name,
   });
 
   console.log("Adding chat message: ", newChatMessage);

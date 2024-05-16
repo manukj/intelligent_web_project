@@ -1,8 +1,6 @@
 let socket = io();
 const urlParams = new URLSearchParams(window.location.search);
-let plantId = "";
 var chatMessages = [];
-var plantOwner = "[replacethis]";
 
 function init() {
   joinPlantChatRoom();

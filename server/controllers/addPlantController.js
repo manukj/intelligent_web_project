@@ -1,4 +1,5 @@
-const AddPlant = require("../models/add_plant_model"); // Import the AddPlant model
+const AddPlant = require("../models/add_plant_model");
+const ChatMessage = require("../models/chat_model");
 
 exports.addAPlantPage = async (req, res, next) => {
   res.render("add_plant/add_plant", {
@@ -57,8 +58,15 @@ exports.editPlantName = async (req, res, next) => {
       { plantName: newPlantName },
       { new: true }
     );
+    console.log("Plant updated with new name: ", updatedPlant);
 
-    if (!updatedPlant) {
+    const result = await ChatMessage.updateMany(
+      { plant_id: plantId },
+      { $set: { "suggested_name.isApprovedByOwner": true } }
+    );
+    console.log("Updated chat messages: ", result);
+
+    if (!updatedPlant && !result) {
       return res
         .status(404)
         .json({ success: false, message: "Plant not found" });
