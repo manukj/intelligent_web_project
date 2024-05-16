@@ -15,8 +15,20 @@
 
     <div class="card flex flex-row place-content-between  shadow ">
 
-      <div class="border-r-2 w-full h-full place-content-center text-center">
-        <p class="text-center"><strong>location:</strong> <%=data.location%> </p>
+      <div class="border-r-2 w-full h-full flex flex-row flex-nowrap">
+          <div><strong>location:</strong></div>
+          <div class="flex flex-row flex-nowrap">
+            <a class="link" href=<%=link %>>map</a>
+            <img
+                    class="h-6 w-6 object-contain"
+                    src="<% if (data.location === '') { %>
+                 /images/nolocation.png
+             <% } else { %>
+                /images/location.png
+             <% } %>"
+                    alt="Conditional Image"
+            />
+          </div>
       </div>
 
       <div class="border-r-2 w-full h-full">
@@ -29,13 +41,13 @@
     </div>
 
     <div class="flex flex-row">
-      <div class="font-bold">Sun Exposure:</div>
-      <div class="tooltip tooltip-right" data-tip="full sun">
+      <div><strong>Sun Exposure:</strong></div>
+      <div class="tooltip tooltip-right" data-tip=<%=data.sunExposure%>>
         <img
                 class="h-6 w-6 object-contain tooltip"
-                src="<% if ('sunExposure' === 'sunExposure') { %>
+                src="<% if (data.sunExposure === 'full') { %>
                  /images/fullsun.png
-             <% } else if ('value' === 'partialExposure') { %>
+             <% } else if (data.sunExposure === 'partial') { %>
                   /images/halfsun.png
              <% } else { %>
                 /images/shade.png
@@ -45,18 +57,23 @@
       </div>
     </div>
 
-    <div class="flex flex-row">
-      <p><strong>color:</strong> <%=data.flowerColor%> </p>
+    <div class="card overscroll-none">
+      <div class="card-title overscroll-none">
+        <p>color: <%=data.flowerColor%> </p>
+      </div>
     </div>
 
-    <div class="flex flex-row">
-      <p><strong>characteristics:</strong> <%=data.characteristics%> </p>
-    </div>
-
-    <div class="stats shadow">
-      <div class="stat">
-        <div class="stat-title">description</div>
+    <div class="card overscroll-none">
+      <div class="card-title overscroll-none">
+        <div>description:</div>
         <%=data.description %>
+      </div>
+    </div>
+
+    <div class="card overscroll-none">
+      <div class="card-title overscroll-none">
+        <div>dbpedia:</div>
+        <a class="link" href=<%= resource %>><%=resource %></a>
       </div>
     </div>
 
@@ -64,17 +81,18 @@
       <input type="checkbox" />
 
       <div class="collapse-title text-xl font-medium">
-        description from dpmedia
+        description from dbpedia
       </div>
       <div class="collapse-content h-full overflow-scroll">
         <% if (dbpediaResult.results.bindings[0] && dbpediaResult.results.bindings[0].description && dbpediaResult.results.bindings[0].description.value) { %>
           <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
         <% } %>
+
       </div>
     </div>
 
     <div class="card-actions justify-end">
-      <div class="badge p-2 badge-primary">Flower</div>
+      <div class="badge p-2 badge-primary"><%=data.characteristics%></div>
     </div>
   </div>
 </div>

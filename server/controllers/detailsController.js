@@ -10,12 +10,25 @@ async function getPlant(plant_id) {
   }
 }
 
+async function getMap(plant) {
+  try{
+    const parts = plant.location.split(',');
+    const latitude = parts[0].trim();
+    const longtitude = parts[1].trim();
+    const link = `https://www.google.com/maps?q=${latitude},${longtitude}`
+    return link;
+  }catch (e) {
+    return null;
+  }
+}
+
 exports.detailsPage = async (req, res, next) => {
   const user_name = req.params.user_name;
-  console.log(req.params.plant_id)
   const plant = await getPlant(req.params.plant_id);
   console.log(plant);
+  const resource = `http://dbpedia.org/resource/`+plant.plantName;
   var dbpediaResult = await getPlantDetails(plant.plantName);
+  const link = await getMap(plant);
   try {
     const data = await getPlant(req.params.plant_id);
     console.log("1");
@@ -26,6 +39,8 @@ exports.detailsPage = async (req, res, next) => {
       data,
       user_name: user_name,
       dbpediaResult: dbpediaResult,
+      resource:resource,
+      link:link,
     });
   } catch (e) {
     console.error(e);
@@ -37,6 +52,7 @@ async function getPlantDetails(plantName) {
   const resource = `http://dbpedia.org/resource/${encodeURIComponent(
       plantName
   )}`;
+  console.log(resource);
   const endpointUrl = "https://dbpedia.org/sparql";
 
   const sqarqlQuery = `
