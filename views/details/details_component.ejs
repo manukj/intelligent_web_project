@@ -1,5 +1,5 @@
 <div class="card w-full glass h-full ">
-  <div class="lg:h-2/5 stats shadow">
+  <div class=" stats shadow">
     <figure>
       <img
               src="/images/uploads/<%= data.photo %>"
@@ -9,25 +9,53 @@
     </figure>
   </div>
 
-  <div class="card-body lg:h-3/5" flex flex-row flex-nowrap>
+  <div class="card-body p-0 m-0" flex flex-row flex-nowrap>
 
       <h2 class="card-title text-2xl"><%= data.plantName%></h2>
       <div class="card overscroll-none">
         <div class="overscroll-none flex flex-row flex-nowrap">
-          <div>Created by:</div>
+          <div class="mr-2">Created by:</div>
           <%= data.user %>
         </div>
       </div>
 
     <div class="card overscroll-none flex flex-row flex-nowrap">
-        <div>dbpedia:</div>
+        <div class="mr-2">dbpedia:</div>
         <a class="link" href=<%= resource %>><%=resource %></a>
     </div>
 
-    <div class="card flex flex-row place-content-between  shadow p-3 ">
+
+    <div class="flex flex-row">
+      <div class="mr-2">Sun Exposure:</div>
+      <div class="tooltip tooltip-right" data-tip=<%=data.sunExposure%>>
+        <img
+                class="h-6 w-6 object-contain tooltip"
+                src="<% if (data.sunExposure === 'full') { %>
+                 /images/fullsun.png
+             <% } else if (data.sunExposure === 'partial') { %>
+                  /images/halfsun.png
+             <% } else { %>
+                /images/shade.png
+             <% } %>"
+                alt="Conditional Image"
+        />
+      </div>
+    </div>
+
+    <div class="card overscroll-none">
+      <div class=" overscroll-none">
+        <p class="mr-2">color: <%=data.flowerColor%> </p>
+      </div>
+    </div>
+
+    <div class="card overscroll-none flex flex-row flex-nowrap">
+        <div class="mr-2">description:</div>
+        <%=data.description %>
+    </div>
+    <div class=" bg-base-100 rounded-lg card flex flex-row place-content-between  shadow p-3 ">
 
       <div class="border-r-2 w-full h-full flex flex-row items-center place-content-center">
-          <div><strong>location :</strong></div>
+          <div><strong >location :</strong></div>
           <div class="flex flex-row flex-nowrap px-2">
             <a class="link px-2" href=<%=link %>>map</a>
             <img
@@ -51,47 +79,21 @@
       </div>
     </div>
 
-    <div class="flex flex-row">
-      <div class="">Sun Exposure:</div>
-      <div class="tooltip tooltip-right" data-tip=<%=data.sunExposure%>>
-        <img
-                class="h-6 w-6 object-contain tooltip"
-                src="<% if (data.sunExposure === 'full') { %>
-                 /images/fullsun.png
-             <% } else if (data.sunExposure === 'partial') { %>
-                  /images/halfsun.png
-             <% } else { %>
-                /images/shade.png
-             <% } %>"
-                alt="Conditional Image"
-        />
-      </div>
-    </div>
 
-    <div class="card overscroll-none">
-      <div class=" overscroll-none">
-        <p>color: <%=data.flowerColor%> </p>
-      </div>
-    </div>
-
-    <div class="card overscroll-none flex flex-row flex-nowrap">
-        <div>description:</div>
-        <%=data.description %>
-    </div>
-
-
-
-    <div class="collapse collapse-arrow bg-base-200">
+    <div class=" bg-base-100 collapse collapse-arrow shadow">
       <input type="checkbox" />
 
       <div class="collapse-title text-xl font-medium">
-        description from dbpedia
+        Description from DBPedia
       </div>
-      <div class="collapse-content h-full tool bg-white">
+      <div class="collapse-content  tool ">
         <% if (dbpediaResult.results.bindings[0] && dbpediaResult.results.bindings[0].description && dbpediaResult.results.bindings[0].description.value) { %>
           <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
         <% }else{ %>
-          <img class="h-full w-full object-contain text-center" src="/images/notfound.png">
+            <div class="flex flex-col items-center h-full">
+              <div class="text-4xl">🤷‍♂️</div>
+            <div class="text-gray-400"> No Content Available</div>
+            </div>
         <% } %>
       </div>
     </div>
