@@ -5,7 +5,7 @@ exports.detailsPage = async (req, res, next) => {
   const user_name = req.params.user_name;
   try {
     const data = await plantModel.findById(req.params.plant_id);
-    console.log(data);
+    console.log("plant data",data);
     res.render("details/details", { data, user_name: user_name });
   } catch (e) {
     console.error(e);

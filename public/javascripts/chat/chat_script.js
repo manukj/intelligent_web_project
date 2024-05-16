@@ -1,7 +1,6 @@
 let socket = io();
 const urlParams = new URLSearchParams(window.location.search);
 let plantId = "";
-let loggedInUserName = "";
 var chatMessages = [];
 var plantOwner = "[replacethis]";
 
@@ -73,7 +72,7 @@ function sendMessage(isSuggestingName = false) {
   if (isSuggestingName) {
     chatMessage = {
       chat_message: input.value,
-      user_name: loggedInUserName,
+      user_name: loggedInUser,
       chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
       plant_id: plantId,
       suggested_name: {
@@ -84,7 +83,7 @@ function sendMessage(isSuggestingName = false) {
   } else {
     chatMessage = {
       chat_message: input.value,
-      user_name: loggedInUserName,
+      user_name: loggedInUser,
       chat_time: new Date().toISOString().replace(/T/, " ").replace(/\..+/, ""),
       plant_id: plantId,
     };
@@ -110,7 +109,7 @@ function sendMessage(isSuggestingName = false) {
 
 function registerSocket() {
   socket.on("joined", function (room, userId, totalUsers) {
-    if (userId === loggedInUserName) {
+    if (userId === loggedInUser) {
       console.log("You joined the room");
     } else {
       console.log("Someone joined the room");
@@ -155,7 +154,7 @@ function addChatToDB(message) {
 function joinPlantChatRoom() {
   console.log("Joining room");
   var roomNo = plantId;
-  var name = loggedInUserName;
+  var name = loggedInUser;
   socket.emit("create_or_join", roomNo, name);
 }
 

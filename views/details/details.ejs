@@ -3,13 +3,17 @@
   <head>
     <link href="/css/output.css" rel="stylesheet" />
     <link rel="manifest" href="/manifest.json" />
+    <script>
+      loggedInUser = "<%= user_name %>";
+    </script>
   </head>
   <div class="flex flex-col h-screen w-full lg:flex-row">
     <div class="lg:w-1/2 m-5">
       <%- include('./details_component.ejs',{data:data}) %>
     </div>
     <div class="lg:w-1/2 m-5">
-      <%- include('./chat.ejs', { plantId: "100" , userName: user_name }) %>
+      <%= data %>
+      <%- include('./chat.ejs', { plantId: data , userName: user_name }) %>
     </div>
   </div>
   <%- include('../components/online_offline_mode.ejs') %>
