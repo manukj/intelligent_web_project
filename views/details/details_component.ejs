@@ -24,7 +24,7 @@
       <div class="border-r-2 w-full h-full flex flex-row items-center place-content-center">
           <div><strong>location :</strong></div>
           <div class="flex flex-row flex-nowrap px-2">
-            <a class="link px-2" href=<%=link %>>map</a>
+            <a class="link px-2" target="_blank" rel="noopener noreferrer" href=<%=link %>>map</a>
             <img
                     class="h-6 w-6 object-contain"
                     src="<% if (data.location === '') { %>
@@ -79,7 +79,7 @@
     <div class="card overscroll-none">
       <div class="card-title overscroll-none">
         <div>dbpedia:</div>
-        <a class="link" href=<%= resource %>><%=resource %></a>
+        <a class="link" target="_blank" rel="noopener noreferrer" href=<%= resource %>><%=resource %></a>
       </div>
     </div>
 
