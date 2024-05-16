@@ -1,6 +1,9 @@
 const AddPlant = require("../models/add_plant_model");
 const ChatMessage = require("../models/chat_model");
 
+/**
+ * Renders the add plant page.
+ */
 exports.addAPlantPage = async (req, res, next) => {
   res.render("add_plant/add_plant", {
     title: "Add A Plant",
@@ -8,12 +11,16 @@ exports.addAPlantPage = async (req, res, next) => {
   });
 };
 
+/**
+ * Adds a new plant to the database.
+ * @returns {Promise} - A promise that resolves to the newly added plant.
+ */
 exports.addNewPlantToDb = async (req, res, next) => {
   const plantData = req.body;
   let photoPath = null;
 
   if (req.file && req.file.fileName) {
-    photoPath = req.file.fileName; // Store the image file name
+    photoPath = req.file.fileName;
   }
   const newPlant = new AddPlant({
     plantName: plantData.plantName,
@@ -46,6 +53,9 @@ exports.addNewPlantToDb = async (req, res, next) => {
     });
 };
 
+/**
+ * Edits the name of a plant in the database.
+ */
 exports.editPlantName = async (req, res, next) => {
   const plantId = req.params.plant_id;
   const { newPlantName } = req.body;

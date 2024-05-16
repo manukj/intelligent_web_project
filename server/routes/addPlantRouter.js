@@ -12,6 +12,6 @@ router.get("/:user_name", addAPlantPage);
 
 router.post("/addNewPlant", upload.single("photo"), addNewPlantToDb);
 
-router.put("/editPlantName/:plant_id", editPlantName); //edit the palnt name
+router.put("/editPlantName/:plant_id", editPlantName);
 
 module.exports = router;
