@@ -9,15 +9,20 @@
     </figure>
   </div>
 
-  <div class="card-body lg:h-3/5">
+  <div class="card-body lg:h-3/5" flex flex-row flex-nowrap>
 
       <h2 class="card-title text-2xl"><%= data.plantName%></h2>
       <div class="card overscroll-none">
-        <div class="card-title overscroll-none">
+        <div class="overscroll-none flex flex-row flex-nowrap">
           <div>Created by:</div>
           <%= data.user %>
         </div>
       </div>
+
+    <div class="card overscroll-none flex flex-row flex-nowrap">
+        <div>dbpedia:</div>
+        <a class="link" href=<%= resource %>><%=resource %></a>
+    </div>
 
     <div class="card flex flex-row place-content-between  shadow p-3 ">
 
@@ -47,7 +52,7 @@
     </div>
 
     <div class="flex flex-row">
-      <div><strong>Sun Exposure:</strong></div>
+      <div class="">Sun Exposure:</div>
       <div class="tooltip tooltip-right" data-tip=<%=data.sunExposure%>>
         <img
                 class="h-6 w-6 object-contain tooltip"
@@ -64,24 +69,17 @@
     </div>
 
     <div class="card overscroll-none">
-      <div class="card-title overscroll-none">
+      <div class=" overscroll-none">
         <p>color: <%=data.flowerColor%> </p>
       </div>
     </div>
 
-    <div class="card overscroll-none">
-      <div class="card-title overscroll-none">
+    <div class="card overscroll-none flex flex-row flex-nowrap">
         <div>description:</div>
         <%=data.description %>
-      </div>
     </div>
 
-    <div class="card overscroll-none">
-      <div class="card-title overscroll-none">
-        <div>dbpedia:</div>
-        <a class="link" href=<%= resource %>><%=resource %></a>
-      </div>
-    </div>
+
 
     <div class="collapse collapse-arrow bg-base-200">
       <input type="checkbox" />
@@ -89,11 +87,12 @@
       <div class="collapse-title text-xl font-medium">
         description from dbpedia
       </div>
-      <div class="collapse-content h-full overflow-scroll">
+      <div class="collapse-content h-full tool bg-white">
         <% if (dbpediaResult.results.bindings[0] && dbpediaResult.results.bindings[0].description && dbpediaResult.results.bindings[0].description.value) { %>
           <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
+        <% }else{ %>
+          <img class="h-full w-full object-contain text-center" src="/images/notfound.png">
         <% } %>
-
       </div>
     </div>
 
