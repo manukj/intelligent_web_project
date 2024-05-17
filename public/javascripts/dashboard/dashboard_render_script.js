@@ -20,13 +20,13 @@ function renderPlantsList(plantList) {
       "w-full",
       "h-full",
       "items-center",
-      "place-content-center",
+      "place-content-center"
     );
     const noMessagesImg = document.createElement("img");
     noMessagesImg.src = "/images/no_plant.svg";
     noMessagesImg.classList.add("w-[400px]");
     const noMessagesText = document.createElement("div");
-    noMessagesText.classList.add("text-3xl", "text-gray-500","mt-10");
+    noMessagesText.classList.add("text-3xl", "text-gray-500", "mt-10");
     noMessagesText.textContent = "No Plants Added ";
     noMessagesDiv.appendChild(noMessagesImg);
     noMessagesDiv.appendChild(noMessagesText);
@@ -41,14 +41,18 @@ function renderPlantsList(plantList) {
 
 function createCard(plant) {
   var card = document.createElement("div");
-  plant.photo = plant.photo || placeHolderImage;
+  if (plant.photo.type) {
+    plant.photo = "images/offline_image_uploaded.svg";
+  } else {
+    plant.photo = "images/uploads/" + plant.photo;
+  }
   card.className = "card shadow-lg bg-white cursor-pointer";
   card.onclick = function () {
     showDetailsPage(plant._id); // Call your function to show details page
   };
 
   var image = document.createElement("img");
-  image.src = "images/uploads/" + plant.photo;
+  image.src = plant.photo;
   image.alt = plant.photo;
   image.onerror = function () {
     this.onerror = null;
