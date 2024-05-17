@@ -84,18 +84,16 @@ function addNewPlantDetails() {
     photo,
   };
 
-  openSyncPlantIDB().then((db) => {
-    addNewPlantToSync(db, plantDetails).then((data) => {
-      console.log("added data inside Index db", data);
-      if (navigator.onLine) {
-        console.log("Plant added to Sync DB");
-        submitPlantDetails(plantDetails);
-      } else {
+  if (navigator.onLine) {
+    submitPlantDetails(plantDetails);
+  } else {
+    openSyncPlantIDB().then((db) => {
+      addNewPlantToSync(db, plantDetails).then((data) => {
         console.log("Plant added to Sync DB");
         window.location.href = "/";
-      }
+      });
     });
-  });
+  }
 }
 
 function submitPlantDetails(plantDetails) {
@@ -111,8 +109,9 @@ function submitPlantDetails(plantDetails) {
   formData.append("sunExposure", plantDetails.sunExposure);
   formData.append("photo", plantDetails.photo);
   formData.append("user", loggedInUser);
-
-  fetch("addNewPlant", {
+  const currentUrl = window.location.href;
+  const url = currentUrl + "/addNewPlant";
+  fetch(url, {
     method: "POST",
     body: formData,
   })

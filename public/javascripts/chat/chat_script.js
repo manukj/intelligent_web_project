@@ -89,11 +89,11 @@ function sendMessage(isSuggestingName = false) {
 
   openSyncChatsIDB().then((db) => {
     addNewChatToSync(db, chatMessage).then((data) => {
-      renderChatMessages([data.value]);
       if (navigator.onLine) {
         console.log("Chat added to Sync DB");
         input.value = "";
         console.log("chatMessage", chatMessage);
+        addChatToDB(chatMessage);
         socket.emit("chat", chatMessage);
         deleteSyncChatFromIDB(db, data.id);
       } else {
@@ -120,7 +120,7 @@ function registerSocket() {
 
   socket.on("chat_message", function (msg) {
     console.log("Received message:", msg);
-    addChatToDB(msg);
+    renderChatMessages([msg]);
   });
 }
 
