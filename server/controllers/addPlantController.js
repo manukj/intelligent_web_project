@@ -7,7 +7,6 @@ const ChatMessage = require("../models/chat_model");
 exports.addAPlantPage = async (req, res, next) => {
   res.render("add_plant/add_plant", {
     title: "Add A Plant",
-    user: req.params.user_name,
   });
 };
 

@@ -1,5 +1,12 @@
 <div class="card w-full glass h-full">
-  <div class=" stats shadow h-full">
+  <div class="stats shadow h-full relative">
+    <div
+    class="absolute top-2 left-2 btn btn-circle btn-neutral"
+    onclick="window.history.back();"
+  > 
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 text-white" viewBox="0 0 320 512"> <path class="fill-white" d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>
+</div>
+
     <figure>
       <img
               src="/images/uploads/<%= data.photo %>"
@@ -9,7 +16,7 @@
     </figure>
   </div>
 
-  <div class="card-body p-0 m-0  h-full " flex flex-row flex-nowrap>
+  <div class="card-body p-5 m-0  h-full " flex flex-row flex-nowrap>
 
       <h2 class="card-title text-2xl"><%= data.plantName%></h2>
       <div class="card overscroll-none">
@@ -21,7 +28,7 @@
 
     <div class="card overscroll-none flex flex-row flex-nowrap">
         <div class="mr-2">dbpedia:</div>
-        <a class="link" href=<%= resource %>><%=resource %></a>
+        <a class="link" target="_blank" rel="noopener noreferrer"  href=<%= resource %>><%=resource %></a>
     </div>
 
 
@@ -83,10 +90,10 @@
     <div class=" bg-base-100 collapse collapse-arrow shadow">
       <input type="checkbox" />
 
-      <div class="collapse-title text-xl font-medium">
+      <div class="collapse-title text-xl font-medium ">
         Description from DBPedia
       </div>
-      <div class="collapse-content  tool ">
+      <div class="collapse-content  tool rounded-lg">
         <% if (dbpediaResult.results.bindings[0] && dbpediaResult.results.bindings[0].description && dbpediaResult.results.bindings[0].description.value) { %>
           <%= JSON.stringify(dbpediaResult.results.bindings[0].description.value) %>
         <% }else{ %>

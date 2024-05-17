@@ -11,9 +11,8 @@
     />
     <script src="/javascripts/add_plant/add_plant_script.js"></script>
     <script src="/javascripts/add_plant/add_plant_idb_utility.js"></script>
-    <script>
-      loggedInUser = "<%= user %>";
-    </script>
+    <script src="/javascripts/user/user_idb_utility.js"></script>
+   
   </head>
   <body onload="init()" class="h-screen flex items-center place-content-center relative">
     <img src="/images/add_plant_image.svg" class="absolute top-8 left-8 w-[400px]  hidden md:block z-2"></img>
@@ -168,4 +167,5 @@
     </div>
     
   </body>
+  <%- include('../components/online_offline_mode.ejs',) %>
 </html>

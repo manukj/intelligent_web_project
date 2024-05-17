@@ -15,7 +15,7 @@ self.addEventListener("install", (event) => {
       try {
         const cache = await caches.open(CACHE_NAME);
         const resourcesToCache = {
-          html: ["/", "/error/404_error", "/error/offline"],
+          html: ["/", "/error/404_error", "/error/offline","/addPlant"],
           css: ["/css/output.css"],
           images: [
             "/images/login_image.svg",
@@ -26,6 +26,7 @@ self.addEventListener("install", (event) => {
           ],
           javascripts: [
             "/javascripts/dashboard/dashboard_script.js",
+            "/javascripts/dashboard/dashboard_render_script.js",
             "/javascripts/add_plant/add_plant_script.js",
             "/javascripts/add_plant/add_plant_idb_utility.js",
             "/javascripts/chat/chat_script.js",
@@ -33,6 +34,7 @@ self.addEventListener("install", (event) => {
             "/javascripts/chat/chat_rendering_script.js",
             "/javascripts/user/user_script.js",
             "/javascripts/user/user_render_script.js",
+            "/javascripts/user/user_idb_utility.js",
           ],
         };
         const resources = Object.values(resourcesToCache).flat();

@@ -1,6 +1,16 @@
+loggedInUser = null;
 function init() {
   listenToLocationUpdate();
   registerFormSubmit();
+  getLoggedInUser();
+}
+
+function getLoggedInUser() {
+  getUserName().then((userName) => {
+    if (userName) {
+      loggedInUser = userName.value;
+    }
+  });
 }
 
 function listenToLocationUpdate() {
@@ -12,7 +22,6 @@ function listenToLocationUpdate() {
           function (position) {
             var latitude = position.coords.latitude.toFixed(4);
             var longitude = position.coords.longitude.toFixed(4);
-  
             document.getElementById("location").value =
               latitude + "°, " + longitude + "°";
           },
@@ -88,6 +97,7 @@ function addNewPlantDetails() {
     });
   });
 }
+
 function submitPlantDetails(plantDetails) {
   const formData = new FormData();
   formData.append("plantName", plantDetails.plantName);
@@ -117,20 +127,12 @@ function submitPlantDetails(plantDetails) {
       console.error("Error submitting plant details:", error);
     });
 }
+
 function listenForOnlineSync() {
-  window.addEventListener("online", function () {
-    console.log("You are now online.");
-    openSyncPlantIDB().then((db) => {
-      getAllSyncPlants(db).then((syncPlants) => {
-        syncPlants.forEach((data) => {
-          console.log("syncing data offline plant", data.value);
-          // Send data.value to the server or perform any other action
-          deleteSyncPlantFromIDB(db, data.id);
-        });
-      });
-    });
-  });
-  window.addEventListener("offline", function () {
-    console.log("You are now offline.");
+  window.addEventListener("online", async () => {
+    const isThereSyncPlant = await checkIfThereIsSyncPlantAndUpdate();
+    if (!isThereSyncPlant) {
+      getPlantsFromNetwork();
+    }
   });
 }
