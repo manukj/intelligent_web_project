@@ -23,7 +23,7 @@ function listenForOnlineSync() {
       getAllSyncChatMessages(db).then((syncChats) => {
         syncChats.forEach((data) => {
           console.log("syncing data offline chat", data.value);
-          socket.emit("chat", data.value);
+          addChatToDB(data.value);
           deleteSyncChatFromIDB(db, data.id);
         });
       });
@@ -100,6 +100,7 @@ function sendMessage(isSuggestingName = false) {
         console.log("Chat added to Sync DB");
         input.value = "";
         console.log("chatMessage", chatMessage);
+        renderChatMessages([chatMessage]);
       }
     });
   });

@@ -6546,6 +6546,10 @@ details.collapse summary::-webkit-details-marker{
   width: 100vw;
 }
 
+.w-60{
+  width: 15rem;
+}
+
 .max-w-\[200px\]{
   max-width: 200px;
 }
