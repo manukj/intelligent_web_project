@@ -1,9 +1,12 @@
+<!--  card element with shadow and background styling  -->
 <div class="card shadow-lg bg-white" onclick="showDetailsPage(1)">
+    <!-- Image element displaying the plant's image -->
   <img
     src="<%= plant.image %>"
     alt="<%= plant.name %>"
     class="w-full h-48 object-contain border-b-2 shadow-3"
   />
+    <!-- Container for the plant details -->
   <div class="p-4">
     <h3 class="text-lg font-medium text-gray-800"><%= plant.name %></h3>
     <p class="text-gray-600">Location: <%= plant.location %></p>
