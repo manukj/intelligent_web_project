@@ -108,7 +108,7 @@ function createCard(plant) {
   // Create and set the plant date/time
   var dateTime = document.createElement("p");
   dateTime.className = "text-gray-600";
-  dateTime.textContent = "Date/Time: " + plant.date;
+  dateTime.textContent = "Date/Time: " + plant.date.replace(/T/, " ").replace(/\..+/, "");
 
   // Append the details to the card
   details.appendChild(title);
