@@ -41,6 +41,7 @@ build/Release
 .settings
 *.sublime-project
 *.sublime-workspace
+.env
 
 # Dreamweaver added files
 _notes

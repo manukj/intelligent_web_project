@@ -1,7 +1,8 @@
 const mongoose = require("mongoose");
+require("dotenv").config();
+
 // mongoo db connection
-const URI =
-  "mongodb+srv://mkenchappajunjanna1:diSfCZ5VwjfbA477@plantify-cluster.kraujc7.mongodb.net/";
+const URI = process.env.MONGO_DB;
 mongoose
   .connect(URI, {})
   .then(() => {
