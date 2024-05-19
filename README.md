@@ -50,5 +50,24 @@ Welcome to the Plant Management project! This README will guide you through the 
 
 ## Resources : 
 
-Tailwind (A MUST WATCH VIDEO) - https://www.youtube.com/watch?v=X6FIydgCzzY
+DEMO : https://www.youtube.com/watch?v=KKdRpOBEUZI 
+
+--------------
+
+## Screen UI  :
+
+![Screenshot 2024-05-17 at 7 28 34 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/763506fe-a021-4e25-a5a8-e6d3dd33ec30)
+
+![Screenshot 2024-05-17 at 7 28 11 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/3e591f27-41fc-4e73-8101-e6cbf599dd94)
+
+![Screenshot 2024-05-17 at 7 22 41 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/a815ab7a-5bd4-4a41-9ea2-d84e4cae1d71)
+
+![Screenshot 2024-05-17 at 7 20 28 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/ce2287f5-318a-4b00-8b24-12397a9d77d4)
+
+![Screenshot 2024-05-17 at 7 22 22 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/52c12253-3b22-418e-bce1-7f8b6c5fbb97)
+
+![Screenshot 2024-05-17 at 7 20 14 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/e2c9ac29-9237-444f-9265-39cb3b7af622)
+
+![Screenshot 2024-05-17 at 7 19 26 AM](https://github.com/manukj/intelligent_web_project/assets/22499119/2278b9b9-ca31-4d3a-9654-cdee493e57ba)
+
 
